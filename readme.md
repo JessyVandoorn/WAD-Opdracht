@@ -21,3 +21,6 @@
 ## updates
 
 ### week 1: opzetten repo & opzet react applicatie
+    * opzetten repo: zonder problemen gelukt 
+    * opzetten react applicatie: zonder problemen gelukt
+    * opzetten menu applicatie: eventjes zoeken hoe we het in de les hebben gedaan, maar is gelukt.
