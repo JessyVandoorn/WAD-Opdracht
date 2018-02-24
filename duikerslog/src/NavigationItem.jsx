@@ -12,7 +12,7 @@ class NavigationItem extends Component {
     }
 
     render() {
-        const {itemName} = this.props;
+        const {itemName, testZin} = this.props;
         const {currentItem} = this.state;
         return <li onClick={this.handleClickItem} className={currentItem?`currentItem`:``}> {itemName} </li>;
     }
