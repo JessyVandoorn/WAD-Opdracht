@@ -8,7 +8,7 @@ class EssentialItem extends Component {
     }
 
     render() {
-        const {datum, locatie, diepte, temperatuur, buddy} = this.props;
+        const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind} = this.props;
         return(
             <table>
                 <thead>
@@ -18,6 +18,8 @@ class EssentialItem extends Component {
                         <th className="tdHead">Diepte</th>
                         <th className="tdHead">temperatuur</th>
                         <th className="tdHead">Buddy</th>
+                        <th className="tdHead">Lucht Start</th>
+                        <th className="tdHead">Lucht Eind</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +29,8 @@ class EssentialItem extends Component {
                         <td className="td">{diepte}</td>
                         <td className="td">{temperatuur}</td>
                         <td className="td">{buddy}</td>
+                        <td className="td">{luchtStart}</td>
+                        <td className="td">{luchtEind}</td>
                     </tr>
                 </tbody>
             </table>
