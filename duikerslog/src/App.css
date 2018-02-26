@@ -11,3 +11,12 @@ ul {
   display: flex;
   flex-direction: row;
 }
+
+.td {
+  text-align: center;
+}
+
+.tdHead {
+  width: 150px;
+  text-align: center;
+}

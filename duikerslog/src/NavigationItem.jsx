@@ -8,6 +8,7 @@ class NavigationItem extends Component {
     }
 
     handleClickItem = (e) => {
+        e.preventDefault();
         this.setState((prevState, props)=> ({ currentItem: !prevState.currentItem }));
     }
 
