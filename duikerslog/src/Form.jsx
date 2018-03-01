@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import Essential from './Essential';
 
 class Form extends Component {
     constructor(props){
@@ -15,11 +16,16 @@ class Form extends Component {
     render = () => {
         const {name} = this.state;
         return(
+            <div>
             <form>
-                <label>{name}
+                <label>Locatie
                     <input type="text" name="name" onChange={this.handleChangeName} value={name}/>
                 </label>
             </form>
+            <div>
+                <Essential locatie={name}/>
+            </div>
+            </div>
         )
     }
     
