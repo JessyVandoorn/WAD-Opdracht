@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EssentialItem from './EssentialItem';
+import PropTypes from 'prop-types';
 
-class Essential extends Component {
-    render() {
-        return (
-            <div>
-                <ul>
-                    <EssentialItem datum="15/10/2017" locatie="Todi" diepte="10m" temperatuur="24°" buddy="Jeroen, Nathalie" luchtStart="300 bar" luchtEind="100 bar"/>
-                </ul>
-            </div>
-        );
-    };
+const Essential = ({datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind}) => {
+    return (
+        <EssentialItem datum={datum} locatie={locatie} diepte={diepte} temperatuur={temperatuur} buddy={buddy} luchtStart={luchtStart} luchtEind={luchtEind}/>
+    );
+}
+
+Essential.propTypes = {
+    datum: PropTypes.string.isRequired,
+    locatie: PropTypes.string.isRequired,
+    diepte: PropTypes.number.isRequired,
+    temperatuur: PropTypes.number.isRequired,
+    buddy: PropTypes.string.isRequired,
+    luchtStart: PropTypes.number.isRequired,
+    luchtEind: PropTypes.number.isRequired
 }
 
 export default Essential;

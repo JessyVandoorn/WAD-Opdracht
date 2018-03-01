@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <Navigation itemName="Home"/>
-        <Essential datum="15/10/2017" locatie="Todi"/>
+        <Essential datum="15/10/2017" locatie="Todi" diepte="10" temperatuur="24" buddy="Jeroen & Nathalie" luchtStart="300" luchtEind="150"/>
       </div>
     );
   }
