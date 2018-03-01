@@ -24,3 +24,8 @@
     * opzetten repo: zonder problemen gelukt 
     * opzetten react applicatie: zonder problemen gelukt
     * opzetten menu applicatie: eventjes zoeken hoe we het in de les hebben gedaan, maar is gelukt.
+
+### week 2: verhelpen errors & week 3 halen 
+    * verhelpen errors met PropTypes
+    * state naar boven halen
+    * functional components maken
