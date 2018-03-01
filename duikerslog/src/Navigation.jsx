@@ -19,8 +19,10 @@ import PropTypes from 'prop-types';
 
 const Navigation = ({itemName, onClick}) => {
     const handleChangeMenu = e => {
-        console.log(e);
+        const {itemName} = e.currentTarget
+        onClick(itemName);
     }
+
 
     return(
         <li>
@@ -30,7 +32,7 @@ const Navigation = ({itemName, onClick}) => {
 };
 
 Navigation.propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
     itemName: PropTypes.string.isRequired
 }
 
