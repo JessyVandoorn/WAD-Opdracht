@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navigation from './Navigation';
 import Essential from './Essential';
+import Form from './Form';
 
 class App extends Component {
   constructor(){
@@ -24,6 +25,7 @@ class App extends Component {
           <Navigation itemName="Materiaal" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
         </ul>
         <Essential datum="15/10/2017" locatie="Todi" diepte={10} temperatuur={24} buddy="Jeroen & Nathalie" luchtStart={300} luchtEind={150}/>
+        <Form name=""/>
       </div>
     );
   }
