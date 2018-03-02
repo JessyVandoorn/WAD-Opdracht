@@ -20,3 +20,17 @@ ul {
   width: 150px;
   text-align: center;
 }
+
+.form {
+  display:flex;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.label {
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

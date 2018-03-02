@@ -33,10 +33,13 @@ const Form = ({value, onChange}) => {
     }
 
     return(
-        <form>
-            <label>Locatie
-                <input type="text" name="name" onChange={handleChangeInput} value={value}/>
-            </label>
+        <form className="form">
+            <fieldset>
+                <legend>Algemene informatie</legend>
+                <label className="label">Locatie
+                    <input type="text" name="name" onChange={handleChangeInput} value={value}/>
+                </label>
+            </fieldset>
         </form>
     );
 };
