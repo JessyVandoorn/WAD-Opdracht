@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Form = ({value, buddy, onChange}) => {
+const Form = ({value, name, buddy, onChange}) => {
 
     const handleChangeInput = e => {
         const {value} = e.currentTarget
@@ -9,7 +9,7 @@ const Form = ({value, buddy, onChange}) => {
     }
 
     return(
-                <label className="label" htmlFor="text">Locatie
+                <label className="label" htmlFor="text">{name}
                     <input id="text" type="text" name="locatie" onChange={handleChangeInput} value={value}/>
                 </label>
     );

@@ -7,7 +7,7 @@ import Form from './Form';
 class App extends Component {
   constructor(){
     super()
-    this.state = {currentItem: false, value: "Todi", diepte:"{10}", buddy:"Jeroen & Nathalie"}
+    this.state = {currentItem: false, value: "Todi", diepte: 10, buddy:"Jeroen & Nathalie"}
   }
 
   handleClickItem = (currentItem) => {
@@ -32,9 +32,11 @@ class App extends Component {
           <Navigation itemName="Materiaal" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
         </ul>
         <Essential datum="15/10/2017" locatie={value} diepte={diepte} temperatuur={24} buddy={buddy} luchtStart={300} luchtEind={150}/>
-        <Form onChange={e => this.handleChangeInput("value", e)} name={value}/>
-        <Form onChange={e => this.handleChangeInput("diepte", e)} name={diepte}/>
-        <Form onChange={e => this.handleChangeInput("buddy", e)} name={buddy}/>
+        <div className="form">
+          <Form onChange={e => this.handleChangeInput("value", e)} name="Locatie"/>
+          <Form onChange={e => this.handleChangeInput("diepte", e)} name="Diepte"/>
+          <Form onChange={e => this.handleChangeInput("buddy", e)} name="buddy"/>
+        </div>
         {/* <div>
           {Object.keys(this.state).map(
             key => <Form value={this.state[key]} key={key} onChange={this.handleChangeInput(key)} />
