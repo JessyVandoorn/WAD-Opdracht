@@ -1,31 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// class Form extends Component {
-//     constructor(props){
-//         super(props);
-//         this.state = { name: "Todi" };
-//     }
-
-//     handleChangeName = e => {
-//         this.setState({name: e.target.value});
-//         console.log(e.target.value);
-//     }
-
-//     render = () => {
-//         const name = this.state.name;
-//         return(
-//             <form>
-//                 <label>Locatie
-//                     <input type="text" name="name" onChange={this.handleChangeName} value={name}/>
-//                 </label>
-//             </form>
-//         )
-//     }
-    
-// }
-
-const Form = ({value, onChange}) => {
+const Form = ({value, buddy, onChange}) => {
 
     const handleChangeInput = e => {
         const {value} = e.currentTarget
@@ -33,14 +9,9 @@ const Form = ({value, onChange}) => {
     }
 
     return(
-        <form className="form">
-            <fieldset>
-                <legend>Algemene informatie</legend>
-                <label className="label">Locatie
-                    <input type="text" name="name" onChange={handleChangeInput} value={value}/>
+                <label className="label" htmlFor="text">Locatie
+                    <input id="text" type="text" name="locatie" onChange={handleChangeInput} value={value}/>
                 </label>
-            </fieldset>
-        </form>
     );
 };
 

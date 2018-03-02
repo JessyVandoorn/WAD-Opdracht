@@ -7,7 +7,7 @@ import Form from './Form';
 class App extends Component {
   constructor(){
     super()
-    this.state = {currentItem: false, value: "Todi"}
+    this.state = {currentItem: false, value: "Todi", diepte:"{10}", buddy:"Jeroen & Nathalie"}
   }
 
   handleClickItem = (currentItem) => {
@@ -15,15 +15,15 @@ class App extends Component {
     console.log(currentItem);
   }
 
-  handleChangeInput = (e) => {
-    const {value} = this.state
-    this.setState({value: e});
-    console.log(value)
-    console.log(e);
+  handleChangeInput = (channel, input) => {
+    this.setState({[channel]: input});
+    console.log(channel)
+    console.log(input);
   }
 
+
   render() {
-    const {currentItem, value} = this.state;
+    const {currentItem, value, diepte, buddy} = this.state;
     return (
       <div>
         <ul>
@@ -31,8 +31,15 @@ class App extends Component {
           <Navigation itemName="Duikerslog" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
           <Navigation itemName="Materiaal" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
         </ul>
-        <Essential datum="15/10/2017" locatie={value} diepte={10} temperatuur={24} buddy="Jeroen & Nathalie" luchtStart={300} luchtEind={150}/>
-        <Form onChange={this.handleChangeInput} name={value}/>
+        <Essential datum="15/10/2017" locatie={value} diepte={diepte} temperatuur={24} buddy={buddy} luchtStart={300} luchtEind={150}/>
+        <Form onChange={e => this.handleChangeInput("value", e)} name={value}/>
+        <Form onChange={e => this.handleChangeInput("diepte", e)} name={diepte}/>
+        <Form onChange={e => this.handleChangeInput("buddy", e)} name={buddy}/>
+        {/* <div>
+          {Object.keys(this.state).map(
+            key => <Form value={this.state[key]} key={key} onChange={this.handleChangeInput(key)} />
+          )}
+        </div> */}
       </div>
     );
   }
