@@ -1,37 +1,49 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Essential from './Essential';
 
-class Form extends Component {
-    constructor(props){
-        super(props);
-        this.state = { name: "kaas" };
-    }
+// class Form extends Component {
+//     constructor(props){
+//         super(props);
+//         this.state = { name: "Todi" };
+//     }
 
-    handleChangeName = e => {
-        this.setState({name: e.target.value});
-        console.log(e.target.value);
-    }
+//     handleChangeName = e => {
+//         this.setState({name: e.target.value});
+//         console.log(e.target.value);
+//     }
 
-    render = () => {
-        const {name} = this.state;
-        return(
-            <div>
-            <form>
-                <label>Locatie
-                    <input type="text" name="name" onChange={this.handleChangeName} value={name}/>
-                </label>
-            </form>
-            <div>
-                <Essential locatie={name}/>
-            </div>
-            </div>
-        )
-    }
+//     render = () => {
+//         const name = this.state.name;
+//         return(
+//             <form>
+//                 <label>Locatie
+//                     <input type="text" name="name" onChange={this.handleChangeName} value={name}/>
+//                 </label>
+//             </form>
+//         )
+//     }
     
-}
+// }
+
+const Form = ({value, onChange}) => {
+
+    const handleChangeInput = e => {
+        const {value} = e.currentTarget
+        onChange(value);
+    }
+
+    return(
+        <form>
+            <label>Locatie
+                <input type="text" name="name" onChange={handleChangeInput} value={value}/>
+            </label>
+        </form>
+    );
+};
+
 
 Form.propTypes = {
+    onChange: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired
 }
 
