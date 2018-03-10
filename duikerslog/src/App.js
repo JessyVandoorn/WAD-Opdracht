@@ -7,8 +7,18 @@ import Form from './Form';
 class App extends Component {
   constructor(){
     super()
-    this.state = {currentItem: false, value: "Todi", diepte: 10, buddy:"Jeroen & Nathalie"}
+    this.state = {currentItem: false, duiken:{}}
   }
+
+  componentDidMount() {
+    fetch('./data/beesten.json')
+        .then( response => response.json())   
+        .then( this.parseDuiken);
+    };
+
+    parseDuiken = data => {
+      this.setState({duiken: data});
+    }
 
   handleClickItem = (currentItem) => {
     this.setState((prevState, props)=> ({ currentItem: !prevState.currentItem }));
@@ -23,7 +33,7 @@ class App extends Component {
 
 
   render() {
-    const {currentItem, value, diepte, buddy} = this.state;
+    const {currentItem, duiken} = this.state;
     return (
       <div>
         <ul>
@@ -31,17 +41,26 @@ class App extends Component {
           <Navigation itemName="Duikerslog" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
           <Navigation itemName="Materiaal" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
         </ul>
-        <Essential datum="15/10/2017" locatie={value} diepte={diepte} temperatuur={24} buddy={buddy} luchtStart={300} luchtEind={150}/>
+        
         <div className="form">
-          <Form onChange={e => this.handleChangeInput("value", e)} name="Locatie"/>
-          <Form onChange={e => this.handleChangeInput("diepte", e)} name="Diepte"/>
-          <Form onChange={e => this.handleChangeInput("buddy", e)} name="buddy"/>
+          <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
+          <Form onChange={value => this.handleChangeInput("diepte", value)} name="Diepte"/>
+          <Form onChange={value => this.handleChangeInput("buddy", value)} name="buddy"/>
         </div>
-        {/* <div>
-          {Object.keys(this.state).map(
-            key => <Form value={this.state[key]} key={key} onChange={this.handleChangeInput(key)} />
-          )}
-        </div> */}
+        <table>
+                        <thead>
+                            <tr>
+                                <th className="tdHead">Datum</th>
+                                <th className="thHead">Locatie</th>
+                                <th className="tdHead">Diepte (m)</th>
+                                <th className="tdHead">temperatuur (°C)</th>
+                                <th className="tdHead">Buddy</th>
+                                <th className="tdHead">Lucht Start (bar)</th>
+                                <th className="tdHead">Lucht Eind (bar)</th>
+                            </tr>
+                        </thead>
+                            <Essential duiken={duiken}/>
+                    </table>
       </div>
     );
   }

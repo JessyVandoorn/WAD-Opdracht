@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Form = ({value, name, buddy, onChange}) => {
+const Form = ({value, name, onChange}) => {
 
     const handleChangeInput = e => {
         const {value} = e.currentTarget

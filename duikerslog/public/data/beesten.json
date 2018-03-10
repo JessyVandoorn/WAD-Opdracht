@@ -1,0 +1,26 @@
+{
+  "1": {
+    "Locatie": "Todi",
+    "Diepte": 10,
+    "Temperatuur": 24,
+    "Buddy": "Jeroen",
+    "luchtStart": 300,
+    "luchtEind": 100
+  },
+  "2": {
+    "Locatie": "Grote Hegge",
+    "Diepte": 10,
+    "Temperatuur": 22,
+    "Buddy": "JeanClaude",
+    "luchtStart": 300,
+    "luchtEind": 100
+  },
+  "3": {
+    "Locatie": "Oesterhaven",
+    "Diepte": 10,
+    "Temperatuur": 20,
+    "Buddy": "Gilles",
+    "luchtStart": 300,
+    "luchtEind": 100
+  }
+}

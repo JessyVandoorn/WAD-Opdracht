@@ -2,9 +2,9 @@ import React from 'react';
 import EssentialItem from './EssentialItem';
 import PropTypes from 'prop-types';
 
-const Essential = ({datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind}) => {
+const Essential = ({duiken}) => {
     return (
-        <EssentialItem datum={datum} locatie={locatie} diepte={diepte} temperatuur={temperatuur} buddy={buddy} luchtStart={luchtStart} luchtEind={luchtEind}/>
+        <EssentialItem duiken={duiken}/>
     );
 }
 
