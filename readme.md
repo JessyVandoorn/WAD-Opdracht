@@ -29,3 +29,14 @@
     * verhelpen errors met PropTypes
     * state naar boven halen
     * functional components maken
+
+### week 3: input
+    * inputveld maken om data aan te passen
+    * propTypes voorzien
+
+### week 4: CRUD essentiële data
+    * Lijst met data bijhouden
+    * Items toevoegen
+    * Items weergeven 
+    * Items updaten
+    * Items wissen
