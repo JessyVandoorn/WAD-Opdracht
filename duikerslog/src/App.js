@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from './Navigation';
 import Essential from './Essential';
 import Form from './Form';
+import OverviewDives from './OverviewDives';
 
 class App extends Component {
   constructor(){
@@ -41,12 +42,8 @@ class App extends Component {
           <Navigation itemName="Duikerslog" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
           <Navigation itemName="Materiaal" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
         </ul>
-        
-        <div className="form">
-          <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
-          <Form onChange={value => this.handleChangeInput("diepte", value)} name="Diepte"/>
-          <Form onChange={value => this.handleChangeInput("buddy", value)} name="buddy"/>
-        </div>
+        <section className="overviewSection">
+        <OverviewDives duiken={duiken}/>
         <table>
                         <thead>
                             <tr>
@@ -61,6 +58,12 @@ class App extends Component {
                         </thead>
                             <Essential duiken={duiken}/>
                     </table>
+          </section>
+          <div className="form">
+          <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
+          <Form onChange={value => this.handleChangeInput("diepte", value)} name="Diepte"/>
+          <Form onChange={value => this.handleChangeInput("buddy", value)} name="buddy"/>
+        </div>
       </div>
     );
   }

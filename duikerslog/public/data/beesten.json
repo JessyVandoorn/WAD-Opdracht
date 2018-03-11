@@ -1,5 +1,6 @@
 {
   "1": {
+    "Datum": "15 oktober",
     "Locatie": "Todi",
     "Diepte": 10,
     "Temperatuur": 24,
@@ -8,6 +9,7 @@
     "luchtEind": 100
   },
   "2": {
+    "Datum": "6 augustus",
     "Locatie": "Grote Hegge",
     "Diepte": 10,
     "Temperatuur": 22,
@@ -16,6 +18,7 @@
     "luchtEind": 100
   },
   "3": {
+    "Datum":"6 mei",
     "Locatie": "Oesterhaven",
     "Diepte": 10,
     "Temperatuur": 20,

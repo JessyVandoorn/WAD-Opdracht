@@ -35,3 +35,16 @@ ul {
   align-items: flex-start;
   margin-right: 10px;
 }
+
+.overviewSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dateBuddy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
