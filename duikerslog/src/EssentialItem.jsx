@@ -27,13 +27,7 @@ const EssentialItem = ({duiken}) => {
 }
 
 EssentialItem.propTypes = {
-    datum: PropTypes.string.isRequired,
-    locatie: PropTypes.string.isRequired,
-    diepte: PropTypes.number.isRequired,
-    temperatuur: PropTypes.number.isRequired,
-    buddy: PropTypes.string.isRequired,
-    luchtStart: PropTypes.number.isRequired,
-    luchtEind: PropTypes.number.isRequired
+    duiken: PropTypes.object.isRequired
 }
 
 export default EssentialItem;
