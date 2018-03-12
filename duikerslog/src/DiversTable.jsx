@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DiversTable = ({duiken, onChangeDuik}) => {
+const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
     const handleChange = (e, id) => {
         const {value, Locatie} = e.currentTarget;
         const duik = {...duiken[id]};
@@ -21,6 +21,9 @@ const DiversTable = ({duiken, onChangeDuik}) => {
                 <td className="td">{duik.Buddy}</td>
                 <td className="td">{duik.luchtStart}</td>
                 <td className="td">{duik.luchtEind}</td>
+                <td className="td">
+                    <button onClick={onClickDelete}>Verwijderen</button>
+                </td>
             </tr>
         )
     }
