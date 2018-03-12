@@ -41,6 +41,13 @@ class App extends Component {
     this.setState({dives});
   }
 
+  handleDelete = (e, id) => {
+    const list = { ...this.state.duiken };
+    delete list[id];
+    this.setState({ duiken: list });
+    
+  }
+
 
   render() {
     const {currentItem, duiken} = this.state;
@@ -55,7 +62,7 @@ class App extends Component {
         <section className="overviewSection">
         <OverviewDives duiken={duiken}/>
         <div>
-          <DiversTable duiken={duiken} onChangeDuik={this.handleChangeDuik}/>
+          <DiversTable duiken={duiken} onChangeDuik={this.handleChangeDuik} onClickDelete={this.handleDelete}/>
           <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
         </div>
         </section>

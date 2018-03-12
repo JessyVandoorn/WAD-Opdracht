@@ -22,7 +22,7 @@ const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
                 <td className="td">{duik.luchtStart}</td>
                 <td className="td">{duik.luchtEind}</td>
                 <td className="td">
-                    <button onClick={onClickDelete}>Verwijderen</button>
+                    <button onClick={e => onClickDelete(e,id)}>Verwijderen</button>
                 </td>
             </tr>
         )
