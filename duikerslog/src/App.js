@@ -30,7 +30,8 @@ class App extends Component {
   handleChangeDuik = (id, duik) => {
     const dives = {...this.state.duiken};
     dives[id] = duik;
-    this.setState({dives});
+    this.setState({duiken: dives});
+    console.log(dives);
   }
 
   handleDelete = (e, id) => {
