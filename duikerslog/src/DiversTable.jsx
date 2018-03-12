@@ -1,17 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const DiversTable = ({duiken}) => {
-    const renderTable = (id, {Datum, Locatie,Diepte, Temperatuur, Buddy, luchtStart, luchtEind}) => {
+const DiversTable = ({duiken, onChangeDuik}) => {
+    const handleChange = (e, id) => {
+        const {value, Locatie} = e.currentTarget;
+        const duik = {...duiken[id]};
+        duik[Locatie] = value;
+        onChangeDuik(id, duik);
+    }
+
+    const renderTable = (id, duik) => {
         return(
             <tr key={id}>
-                <td className="td">{Datum}</td>
-                <td className="td">{Locatie}</td>
-                <td className="td">{Diepte}</td>
-                <td className="td">{Temperatuur}</td>
-                <td className="td">{Buddy}</td>
-                <td className="td">{luchtStart}</td>
-                <td className="td">{luchtEind}</td>
+                <td className="td">{duik.Datum}</td>
+                <td className="td">
+                <input type="text" name="locatie" defaultValue={duik.Locatie} onChange={e => handleChange(e, id)}/>
+                </td>
+                <td className="td">{duik.Diepte}</td>
+                <td className="td">{duik.Temperatuur}</td>
+                <td className="td">{duik.Buddy}</td>
+                <td className="td">{duik.luchtStart}</td>
+                <td className="td">{duik.luchtEind}</td>
             </tr>
         )
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navigation from './Navigation';
 // import Essential from './Essential';
-// import Form from './Form';
+import Form from './Form';
 import DiversTable from './DiversTable';
 import OverviewDives from './OverviewDives';
 
@@ -33,6 +33,14 @@ class App extends Component {
     console.log(input);
   }
 
+  handleChangeDuik = (id, duik) => {
+    console.log(duik);
+    const dives = {...this.state.duiken};
+    dives[id] = duik;
+    console.log(dives);
+    this.setState({dives});
+  }
+
 
   render() {
     const {currentItem, duiken} = this.state;
@@ -46,7 +54,10 @@ class App extends Component {
         </ul>
         <section className="overviewSection">
         <OverviewDives duiken={duiken}/>
-        <DiversTable duiken={duiken} />
+        <div>
+          <DiversTable duiken={duiken} onChangeDuik={this.handleChangeDuik}/>
+          <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
+        </div>
         </section>
       </div>
     );
