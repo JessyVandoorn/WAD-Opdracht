@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
     const handleChange = (e, id) => {
-        const {value, Locatie} = e.currentTarget;
+        const {value, name} = e.currentTarget;
         const duik = {...duiken[id]};
-        duik[Locatie] = value;
+        duik[name] = value;
         onChangeDuik(id, duik);
     }
 
@@ -14,7 +14,7 @@ const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
             <tr key={id}>
                 <td className="td">{duik.Datum}</td>
                 <td className="td">
-                <input type="text" name="locatie" defaultValue={duik.Locatie} onChange={e => handleChange(e, id)}/>
+                <input type="text" name="Locatie" defaultValue={duik.Locatie} onChange={e => handleChange(e, id)}/>
                 </td>
                 <td className="td">{duik.Diepte}</td>
                 <td className="td">{duik.Temperatuur}</td>

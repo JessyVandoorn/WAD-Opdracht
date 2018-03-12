@@ -27,17 +27,9 @@ class App extends Component {
     console.log(currentItem);
   }
 
-  handleChangeInput = (channel, input) => {
-    this.setState({[channel]: input});
-    console.log(channel)
-    console.log(input);
-  }
-
   handleChangeDuik = (id, duik) => {
-    console.log(duik);
     const dives = {...this.state.duiken};
     dives[id] = duik;
-    console.log(dives);
     this.setState({dives});
   }
 
@@ -46,6 +38,12 @@ class App extends Component {
     delete list[id];
     this.setState({ duiken: list });
     
+  }
+
+  handleInput = () => {
+    const {duiken} = this.state;
+    const updatedDives = {...duiken};
+    console.log(updatedDives);
   }
 
 
@@ -63,7 +61,7 @@ class App extends Component {
         <OverviewDives duiken={duiken}/>
         <div>
           <DiversTable duiken={duiken} onChangeDuik={this.handleChangeDuik} onClickDelete={this.handleDelete}/>
-          <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
+          <Form onChange={this.handleInput} name="Locatie"/>
         </div>
         </section>
       </div>
