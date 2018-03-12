@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const OverviewDives = ({duiken}) => {
     const renderOverview = (id, {Datum, Locatie, Buddy}) => {
         return(
-                <section>
+                <section key={id} className="paddingOverview">
                     <h3>{id} {Locatie}</h3>
                     <div className="dateBuddy">
                         <p>{Datum}</p>
@@ -16,7 +16,7 @@ const OverviewDives = ({duiken}) => {
     }
 
     return(
-        <div>
+        <div className="divesOverview">
             {
                Object.keys(duiken).map(id => renderOverview(id, duiken[id])) 
             }

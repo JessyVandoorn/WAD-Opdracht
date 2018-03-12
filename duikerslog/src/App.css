@@ -48,3 +48,11 @@ ul {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.divesOverview{
+  background-color: red;
+}
+
+.paddingOverview {
+  padding: 20px;
+}

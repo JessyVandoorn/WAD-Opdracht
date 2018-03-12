@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navigation from './Navigation';
-import Essential from './Essential';
-import Form from './Form';
+// import Essential from './Essential';
+// import Form from './Form';
+import DiversTable from './DiversTable';
 import OverviewDives from './OverviewDives';
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('./data/beesten.json')
+    fetch('./data/dives.json')
         .then( response => response.json())   
         .then( this.parseDuiken);
     };
@@ -37,6 +38,7 @@ class App extends Component {
     const {currentItem, duiken} = this.state;
     return (
       <div>
+        <h1> Duikerslog </h1>
         <ul>
           <Navigation itemName="Home" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
           <Navigation itemName="Duikerslog" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
@@ -44,26 +46,8 @@ class App extends Component {
         </ul>
         <section className="overviewSection">
         <OverviewDives duiken={duiken}/>
-        <table>
-                        <thead>
-                            <tr>
-                                <th className="tdHead">Datum</th>
-                                <th className="thHead">Locatie</th>
-                                <th className="tdHead">Diepte (m)</th>
-                                <th className="tdHead">temperatuur (°C)</th>
-                                <th className="tdHead">Buddy</th>
-                                <th className="tdHead">Lucht Start (bar)</th>
-                                <th className="tdHead">Lucht Eind (bar)</th>
-                            </tr>
-                        </thead>
-                            <Essential duiken={duiken}/>
-                    </table>
-          </section>
-          <div className="form">
-          <Form onChange={value => this.handleChangeInput("value", value)} name="Locatie" defaultValue="Todi"/>
-          <Form onChange={value => this.handleChangeInput("diepte", value)} name="Diepte"/>
-          <Form onChange={value => this.handleChangeInput("buddy", value)} name="buddy"/>
-        </div>
+        <DiversTable duiken={duiken} />
+        </section>
       </div>
     );
   }
