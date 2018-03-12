@@ -36,7 +36,7 @@
 
 ### week 4: CRUD essentiële data
     * Lijst met data bijhouden
-    * Items toevoegen
+    * Items toevoegen --> dit lukt niet zo goed, snap niet hoe goed dit moment.
     * Items weergeven 
     * Items updaten
     * Items wissen

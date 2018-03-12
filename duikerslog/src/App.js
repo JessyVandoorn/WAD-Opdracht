@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navigation from './Navigation';
-// import Essential from './Essential';
 import Form from './Form';
 import DiversTable from './DiversTable';
 import OverviewDives from './OverviewDives';
