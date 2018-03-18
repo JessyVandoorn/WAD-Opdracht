@@ -10,14 +10,23 @@ import { Route, Switch, Link } from 'react-router-dom';
 class App extends Component {
   constructor(){
     super()
-    this.state = { duiken:{}}
+    this.state = { duiken:{}, places:{}}
   }
 
   componentDidMount() {
     fetch('./data/dives.json')
         .then( response => response.json())   
         .then( this.parseDuiken);
+
+      fetch('./data/divePlaces.json')
+        .then(response => response.json())
+        .then(this.parsePlaces);
     };
+
+    parsePlaces = data => {
+      console.log(data.sites);
+      this.setState({places: data.sites});
+    }
 
     parseDuiken = data => {
       this.setState({duiken: data});
@@ -45,13 +54,13 @@ class App extends Component {
 
 
   render() {
-    const { duiken} = this.state;
+    const { duiken, places} = this.state;
     return (
       <main>
         <h1><Link to="/">Duikerslog</Link></h1>
         <Switch>
           <Route path='/' exact render={() => <Navigation/> } />
-          <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen/> } />
+          <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen plaatsen={places}/> } />
           <Route path='/Duikerslog'  render={() => <Duikerslog duiken={duiken}/> } />
           <Route component={NotFound}/>
         </Switch>

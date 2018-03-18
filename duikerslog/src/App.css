@@ -68,3 +68,15 @@ h1 a {
   text-decoration: none;
   color: black;
 }
+
+.locationOverview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.plaatsen {
+  background-color: pink;
+  padding: 5px;
+  margin-right: 5px;
+}
