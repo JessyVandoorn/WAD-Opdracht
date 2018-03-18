@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
     const handleChange = (e, id) => {
@@ -9,42 +10,44 @@ const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
         onChangeDuik(id, duik);
     }
 
-    const renderTable = (id, duik) => {
-        return(
-            <tr key={id}>
-                <td className="td">{duik.Datum}</td>
-                <td className="td">
-                <input type="text" name="Locatie" defaultValue={duik.Locatie} onChange={e => handleChange(e, id)}/>
-                </td>
-                <td className="td">{duik.Diepte}</td>
-                <td className="td">{duik.Temperatuur}</td>
-                <td className="td">{duik.Buddy}</td>
-                <td className="td">{duik.luchtStart}</td>
-                <td className="td">{duik.luchtEind}</td>
-                <td className="td">
-                    <button onClick={e => onClickDelete(e,id)}>Verwijderen</button>
-                </td>
-            </tr>
-        )
-    }
-
     return(
-        <table>
-                <thead>
-                     <tr>
-                        <th className="tdHead">Datum</th>
-                        <th className="thHead">Locatie</th>
-                        <th className="tdHead">Diepte (m)</th>
-                        <th className="tdHead">temperatuur (°C)</th>
-                        <th className="tdHead">Buddy</th>
-                        <th className="tdHead">Lucht Start (bar)</th>
-                        <th className="tdHead">Lucht Eind (bar)</th>
-                        </tr>
-                </thead>
-                <tbody>
-                {Object.keys(duiken).map(id => renderTable(id, duiken[id]))}
-                </tbody>
-            </table>
+        <div>
+            <table>
+                    <thead>
+                        <tr>
+                            <th className="tdHead">Datum</th>
+                            <th className="thHead">Locatie</th>
+                            <th className="tdHead">Diepte (m)</th>
+                            <th className="tdHead">temperatuur (°C)</th>
+                            <th className="tdHead">Buddy</th>
+                            <th className="tdHead">Lucht Start (bar)</th>
+                            <th className="tdHead">Lucht Eind (bar)</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        duiken && Object.keys(duiken).map(id => (
+                            <tr key={id}>
+                                <td className="td">{duiken[id].Datum}</td>
+                                <td className="td">
+                                <input type="text" name="Locatie" defaultValue={duiken[id].Locatie} onChange={e => handleChange(e, id)}/>
+                                </td>
+                                <td className="td">{duiken[id].Diepte}</td>
+                                <td className="td">{duiken[id].Temperatuur}</td>
+                                <td className="td">{duiken[id].Buddy}</td>
+                                <td className="td">{duiken[id].luchtStart}</td>
+                                <td className="td">{duiken[id].luchtEind}</td>
+                                <td className="td">
+                                    <button onClick={e => onClickDelete(e,id)}>Verwijderen</button>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                    </tbody>
+                </table>
+
+                <Link to="/DiversTable/add" className="button">Duik Toevoegen</Link>
+        </div>
     )
 }
 

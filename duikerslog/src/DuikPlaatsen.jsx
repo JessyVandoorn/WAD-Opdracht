@@ -1,10 +1,14 @@
 import React from 'react';
 import Navigation from './Navigation';
+import { Link } from "react-router-dom";
 
 const DuikPlaatsen = ({plaatsen}) => {
     const renderTable = (id, plaats) => {
         return(
-            <p className="plaatsen" key={id}>{plaats.name}
+            <p className="plaatsen" key={id}>
+            <Link to={`DuikPlaatsen/${id}`}>
+            {plaats.name}
+            </Link>
             </p>
         )
     }

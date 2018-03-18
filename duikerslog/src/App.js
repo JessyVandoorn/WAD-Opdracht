@@ -4,7 +4,10 @@ import Navigation from './Navigation';
 import DuikPlaatsen from './DuikPlaatsen';
 import Duikerslog from './Duikerslog';
 import OverviewDives from './OverviewDives';
+import DivePlacesDetail from './DivePlacesDetail';
+import AddTopic from './AddTopic';
 import NotFound from './NotFound';
+import Dive from './models/Dive';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -52,6 +55,17 @@ class App extends Component {
     console.log(updatedDives);
   }
 
+  handleAddTopic = (value, callback) => {
+    console.log(value);
+    const dive = new Dive(value);
+    console.log(dive);
+    const duiken = { ...this.state.duiken };
+    const id = Date.now();
+    duiken[id] = dive;
+    console.log(duiken[id]);
+    this.setState({ duiken }, () => callback(id));
+  }
+
 
   render() {
     const { duiken, places} = this.state;
@@ -62,6 +76,11 @@ class App extends Component {
           <Route path='/' exact render={() => <Navigation/> } />
           <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen plaatsen={places}/> } />
           <Route path='/Duikerslog'  render={() => <Duikerslog duiken={duiken}/> } />
+          <Route path='/DiversTable/add' render={() => <AddTopic onAddTopic={this.handleAddTopic}/>}/>
+          <Route path='/DuikPlaatsen/:id' render={({ match }) => {
+            const id = match.params.id;
+            return duiken[id]?<DivePlacesDetail key={id} id={id} place={duiken[id]} />:<NotFound />
+          }} />
           <Route component={NotFound}/>
         </Switch>
         <OverviewDives duiken={duiken} />
