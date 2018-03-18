@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navigation from './Navigation';
-import Form from './Form';
-import DiversTable from './DiversTable';
+import DuikPlaatsen from './DuikPlaatsen';
+import Duikerslog from './Duikerslog';
 import OverviewDives from './OverviewDives';
+import NotFound from './NotFound';
+import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
   constructor(){
     super()
-    this.state = {currentItem: false, duiken:{}}
+    this.state = { duiken:{}}
   }
 
   componentDidMount() {
@@ -20,11 +22,6 @@ class App extends Component {
     parseDuiken = data => {
       this.setState({duiken: data});
     }
-
-  handleClickItem = (currentItem) => {
-    this.setState((prevState, props)=> ({ currentItem: !prevState.currentItem }));
-    console.log(currentItem);
-  }
 
   handleChangeDuik = (id, duik) => {
     const dives = {...this.state.duiken};
@@ -48,23 +45,18 @@ class App extends Component {
 
 
   render() {
-    const {currentItem, duiken} = this.state;
+    const { duiken} = this.state;
     return (
-      <div>
-        <h1> Duikerslog </h1>
-        <ul>
-          <Navigation itemName="Home" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
-          <Navigation itemName="Duikerslog" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
-          <Navigation itemName="Materiaal" onClick={this.handleClickItem} className={currentItem?`currentItem`:``}/>
-        </ul>
-        <section className="overviewSection">
-        <OverviewDives duiken={duiken}/>
-        <div>
-          <DiversTable duiken={duiken} onChangeDuik={this.handleChangeDuik} onClickDelete={this.handleDelete}/>
-          <Form onChange={this.handleInput} name="Locatie"/>
-        </div>
-        </section>
-      </div>
+      <main>
+        <h1><Link to="/">Duikerslog</Link></h1>
+        <Switch>
+          <Route path='/' exact render={() => <Navigation/> } />
+          <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen/> } />
+          <Route path='/Duikerslog'  render={() => <Duikerslog duiken={duiken}/> } />
+          <Route component={NotFound}/>
+        </Switch>
+        <OverviewDives duiken={duiken} />
+      </main>
     );
   }
 }

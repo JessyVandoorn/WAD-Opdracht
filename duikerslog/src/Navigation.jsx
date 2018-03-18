@@ -1,39 +1,18 @@
 import React from 'react';
 import NavigationItem from './NavigationItem';
-import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
-// class Navigation extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <ul>
-//                     <NavigationItem itemName="Materiaal" testZin="dit is het materiaal gedeelte"/>
-//                     <NavigationItem itemName="Logboek" testZin="dit is het logboek gedeelte"/>
-//                     <NavigationItem itemName="Duikplaatsen" testZin="dit is het overzicht van de duikplaatsen"/>
-//                 </ul>
-//             </div>
-//         );
-//     };
-// }
-
-
-const Navigation = ({itemName, onClick}) => {
-    const handleChangeMenu = e => {
-        const {itemName} = e.currentTarget
-        onClick(itemName);
-    }
-
-
+const Navigation = () => {
     return(
-        <li>
-            <NavigationItem  itemName={itemName} onClick={handleChangeMenu} />
-        </li>
+        <nav>
+            <ul>
+                <Link to='/DuikPlaatsen'> <NavigationItem itemName="Duikplaatsen"/> </Link>
+                <Link to='/Duikerslog'> <NavigationItem itemName="Duikerslog"/> </Link>
+                <Link to='/Materiaal'> <NavigationItem itemName="Materiaal"/> </Link>
+            </ul>
+        </nav>
     );
 };
 
-Navigation.propTypes = {
-    onClick: PropTypes.func.isRequired,
-    itemName: PropTypes.string.isRequired
-}
 
 export default Navigation;

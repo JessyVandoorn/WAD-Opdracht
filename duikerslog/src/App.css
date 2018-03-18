@@ -12,6 +12,11 @@ ul {
   flex-direction: row;
 }
 
+ul a {
+  text-decoration: none;
+  color: black;
+}
+
 .td {
   text-align: center;
 }
@@ -50,9 +55,16 @@ ul {
 }
 
 .divesOverview{
-  background-color: red;
+  background-color: pink;
+  width: 35vw;
 }
 
 .paddingOverview {
   padding: 20px;
+
+}
+
+h1 a {
+  text-decoration: none;
+  color: black;
 }
