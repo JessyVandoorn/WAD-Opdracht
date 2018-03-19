@@ -40,3 +40,8 @@
     * Items weergeven 
     * Items updaten
     * Items wissen
+
+### week 5: Reacter-router
+    * views opsplitsen
+    * Items toevoegen
+    * Navigatie werkend maken
