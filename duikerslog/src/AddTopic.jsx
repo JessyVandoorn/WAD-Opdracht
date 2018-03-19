@@ -7,7 +7,7 @@ const AddTopic = ({ onAddTopic, history }) => {
   let input = null;
 
   const redirect = id => {
-    history.push(`/DiversTable`);
+    history.push(`/Duikerslog`);
   }
 
   const handleSubmit = (e) => {
@@ -19,10 +19,33 @@ const AddTopic = ({ onAddTopic, history }) => {
 
   return <form onSubmit={handleSubmit}>
   <div>
+    <label htmlFor="">Datum</label>
+    <input className="input-content" autoFocus ref={field => input = field} />
+  </div>
+  <div>
     <label htmlFor="">Locatie</label>
     <input className="input-content" autoFocus ref={field => input = field} />
   </div>
-    
+  <div>
+    <label htmlFor="">Diepte</label>
+    <input className="input-content" autoFocus ref={field => input = field} />
+  </div>
+  <div>
+    <label htmlFor="">Temperatuur</label>
+    <input className="input-content" autoFocus ref={field => input = field} />
+  </div>
+  <div>
+    <label htmlFor="">Buddy</label>
+    <input className="input-content" autoFocus ref={field => input = field} />
+  </div>
+  <div>
+    <label htmlFor="">Lucht Start</label>
+    <input className="input-content" autoFocus ref={field => input = field} />
+  </div>
+  <div>
+    <label htmlFor="">Lucht Eind</label>
+    <input className="input-content" autoFocus ref={field => input = field} />
+  </div>
     <input className="button" type="submit" value="Submit" />
   </form>
 }

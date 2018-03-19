@@ -79,7 +79,7 @@ class App extends Component {
           <Route path='/DiversTable/add' render={() => <AddTopic onAddTopic={this.handleAddTopic}/>}/>
           <Route path='/DuikPlaatsen/:id' render={({ match }) => {
             const id = match.params.id;
-            return duiken[id]?<DivePlacesDetail key={id} id={id} place={duiken[id]} />:<NotFound />
+            return places[id]?<DivePlacesDetail key={id} id={id} place={places[id]} />:<NotFound />
           }} />
           <Route component={NotFound}/>
         </Switch>
