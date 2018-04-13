@@ -6,13 +6,10 @@ import Navigation from './Navigation';
 const Duikerslog = ({duiken}) => {
   return (
     <section>
-        <nav>
+      <nav>
         <Navigation/> 
-    </nav>
-    <div className="overviewSection">
+      </nav>
     <DiversTable duiken={duiken} onChangeDuik={this.handleChangeDuik} onClickDelete={this.handleDelete}/>
-    {/* <Form onChange={this.handleInput} name="Locatie"/> */}
-  </div>
     </section>
     
 )  

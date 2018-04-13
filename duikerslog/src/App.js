@@ -17,11 +17,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('./data/dives.json')
+    fetch('../data/dives.json')
         .then( response => response.json())   
         .then( this.parseDuiken);
 
-      fetch('./data/divePlaces.json')
+      fetch('../data/divePlaces.json')
         .then(response => response.json())
         .then(this.parsePlaces);
     };
