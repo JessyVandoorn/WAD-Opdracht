@@ -8,7 +8,7 @@ const Navigation = () => {
             <ul>
                 <Link to='/DuikPlaatsen'> <NavigationItem itemName="Duikplaatsen"/> </Link>
                 <Link to='/Duikerslog'> <NavigationItem itemName="Duikerslog"/> </Link>
-                <Link to='/Materiaal'> <NavigationItem itemName="Materiaal"/> </Link>
+                <Link to='/DiveMaterial'> <NavigationItem itemName="Materiaal"/> </Link>
             </ul>
         </nav>
     );

@@ -108,3 +108,8 @@ a {
 .updatePlaats {
   height: 75vh;
 }
+
+.materiaal {
+  display:flex;
+  flex-direction: column;
+}

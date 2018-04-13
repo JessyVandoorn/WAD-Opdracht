@@ -1,5 +1,4 @@
 import React from 'react';
-// import Form from './Form';
 import DiversTable from './DiversTable';
 import Navigation from './Navigation';
 

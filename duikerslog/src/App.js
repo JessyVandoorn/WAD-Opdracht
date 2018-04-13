@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Navigation from './Navigation';
 import DuikPlaatsen from './DuikPlaatsen';
+import DiveMaterial from './DiveMaterial';
 import Duikerslog from './Duikerslog';
 import OverviewDives from './OverviewDives';
 import DivePlacesDetail from './DivePlacesDetail';
@@ -82,6 +83,7 @@ class App extends Component {
             const id = match.params.id;
             return places[id]?<DivePlacesDetail key={id} id={id} place={places[id]} />:<NotFound />
           }} />
+          <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
           <Route component={NotFound}/>
         </Switch>
         {/* <OverviewDives duiken={duiken} /> */}
