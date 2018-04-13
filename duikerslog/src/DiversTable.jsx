@@ -2,12 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
+const DiversTable = ({duiken, onClickDelete}) => {
     const handleChange = (e, id) => {
         const {value, name} = e.currentTarget;
         const duik = {...duiken[id]};
         duik[name] = value;
-        onChangeDuik(id, duik);
     }
 
     return(
@@ -29,9 +28,7 @@ const DiversTable = ({duiken, onChangeDuik, onClickDelete}) => {
                         duiken && Object.keys(duiken).map(id => (
                             <tr key={id}>
                                 <td className="td">{duiken[id].Datum}</td>
-                                <td className="td">
-                                <input type="text" name="Locatie" defaultValue={duiken[id].Locatie} onChange={e => handleChange(e, id)}/>
-                                </td>
+                                <td className="td">{duiken[id].Locatie}</td>
                                 <td className="td">{duiken[id].Diepte}</td>
                                 <td className="td">{duiken[id].Temperatuur}</td>
                                 <td className="td">{duiken[id].Buddy}</td>

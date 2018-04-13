@@ -57,6 +57,7 @@ class App extends Component {
 
   handleAddTopic = (value, callback) => {
     console.log(value);
+    console.log(dive);
     const dive = new Dive(value);
     console.log(dive);
     const duiken = { ...this.state.duiken };
@@ -83,7 +84,7 @@ class App extends Component {
           }} />
           <Route component={NotFound}/>
         </Switch>
-        <OverviewDives duiken={duiken} />
+        {/* <OverviewDives duiken={duiken} /> */}
       </main>
     );
   }

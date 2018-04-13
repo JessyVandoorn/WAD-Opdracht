@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 
 const AddTopic = ({ onAddTopic, history }) => {
 
-  let input = null;
+  let input = [];
+  let datum = null;
+  let locatie = null;
+  let diepte = null;
+  let temperatuur = null;
+  let buddy = null;
+  let start = null;
+  let eind = null;
+
 
   const redirect = id => {
     history.push(`/Duikerslog`);
@@ -12,39 +20,42 @@ const AddTopic = ({ onAddTopic, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.value) {
-      onAddTopic(input.value, redirect);
-    }
+    input.push(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
+    console.log(input);
+    console.log(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
+    // if (datum.value && locatie.value && diepte.value && temperatuur.value && buddy.value && start.value && eind.value) {
+      onAddTopic(input, redirect);
+    // }
   }
 
   return <form onSubmit={handleSubmit}>
   <div>
     <label htmlFor="">Datum</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => datum = field} />
   </div>
   <div>
     <label htmlFor="">Locatie</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => locatie = field} />
   </div>
   <div>
     <label htmlFor="">Diepte</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => diepte = field} />
   </div>
   <div>
     <label htmlFor="">Temperatuur</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => temperatuur = field} />
   </div>
   <div>
     <label htmlFor="">Buddy</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => buddy = field} />
   </div>
   <div>
     <label htmlFor="">Lucht Start</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => start = field} />
   </div>
   <div>
     <label htmlFor="">Lucht Eind</label>
-    <input className="input-content" autoFocus ref={field => input = field} />
+    <input className="input-content" autoFocus ref={field => eind = field} />
   </div>
     <input className="button" type="submit" value="Submit" />
   </form>
