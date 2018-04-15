@@ -27,7 +27,8 @@ const DivePlacesDetail = ({ place, id }) => {
 }
 
 DivePlacesDetail.propTypes = {
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  place: PropTypes.object.isRequired
 }
 
 export default DivePlacesDetail;

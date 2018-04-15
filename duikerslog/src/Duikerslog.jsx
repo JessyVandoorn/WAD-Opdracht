@@ -1,5 +1,6 @@
 import React from 'react';
 import DiversTable from './DiversTable';
+import PropTypes from 'prop-types';
 
 const Duikerslog = ({duiken}) => {
   return (
@@ -9,5 +10,10 @@ const Duikerslog = ({duiken}) => {
     
 )  
 }
+
+Duikerslog.propTypes = {
+  duiken: PropTypes.object.isRequired
+}
+
 
 export default Duikerslog;

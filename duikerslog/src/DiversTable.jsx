@@ -4,11 +4,6 @@ import './App.css';
 import { Link } from "react-router-dom";
 
 const DiversTable = ({duiken, onClickDelete}) => {
-    const handleChange = (e, id) => {
-        const {value, name} = e.currentTarget;
-        const duik = {...duiken[id]};
-        duik[name] = value;
-    }
 
     return(
         <div className="tableButton">

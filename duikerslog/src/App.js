@@ -28,7 +28,6 @@ class App extends Component {
     };
 
     parsePlaces = data => {
-      console.log(data.sites);
       this.setState({places: data.sites});
     }
 
@@ -40,7 +39,6 @@ class App extends Component {
     const dives = {...this.state.duiken};
     dives[id] = duik;
     this.setState({duiken: dives});
-    console.log(dives);
   }
 
   handleDelete = (e, id) => {
@@ -53,14 +51,10 @@ class App extends Component {
   handleInput = () => {
     const {duiken} = this.state;
     const updatedDives = {...duiken};
-    console.log(updatedDives);
   }
 
   handleAddTopic = (value, callback) => {
-    console.log(value);
-    console.log(dive);
     const dive = new Dive(value);
-    console.log(dive);
     const duiken = { ...this.state.duiken };
     const id = Date.now();
     duiken[id] = dive;
@@ -72,7 +66,7 @@ class App extends Component {
   render() {
     const { duiken, places} = this.state;
     return (
-      <main>
+      <main className="main">
         <h1><Link to="/">Duikerslog</Link></h1>
         <Navigation/>
         <Switch>

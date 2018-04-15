@@ -1,3 +1,7 @@
+.main {
+  margin-left: 2rem;
+}
+
 .currentItem {
   text-decoration: underline;
 }
@@ -10,6 +14,7 @@ li {
 ul {
   display: flex;
   flex-direction: row;
+  padding: 0;
 }
 
 ul a {
@@ -57,7 +62,6 @@ ul a {
 .divesOverview{
   background-color: pink;
   width: 35vw;
-  margin-left: 2rem;
 }
 
 .paddingOverview {
@@ -68,7 +72,6 @@ ul a {
 h1 a {
   text-decoration: none;
   color: black;
-  margin-left: 2rem;
 }
 
 .locationOverview {
