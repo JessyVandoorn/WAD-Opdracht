@@ -74,8 +74,9 @@ class App extends Component {
     return (
       <main>
         <h1><Link to="/">Duikerslog</Link></h1>
+        <Navigation/>
         <Switch>
-          <Route path='/' exact render={() => <Navigation/> } />
+          <Route path='/' exact render={() => <OverviewDives duiken={duiken} /> } />
           <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen plaatsen={places}/> } />
           <Route path='/Duikerslog'  render={() => <Duikerslog duiken={duiken}/> } />
           <Route path='/DiversTable/add' render={() => <AddTopic onAddTopic={this.handleAddTopic}/>}/>
@@ -86,7 +87,7 @@ class App extends Component {
           <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
           <Route component={NotFound}/>
         </Switch>
-        {/* <OverviewDives duiken={duiken} /> */}
+        
       </main>
     );
   }

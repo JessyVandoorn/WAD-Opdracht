@@ -1,5 +1,4 @@
 import React from 'react';
-import Navigation from './Navigation';
 import { Link } from "react-router-dom";
 
 const DuikPlaatsen = ({plaatsen}) => {
@@ -15,10 +14,6 @@ const DuikPlaatsen = ({plaatsen}) => {
 
     return (
         <section>
-            <nav>
-            <Navigation/> 
-        </nav>
-  
              <article className="locationOverview">   {Object.keys(plaatsen).map(id => renderTable(id, plaatsen[id]))} </article>
         </section>
         
