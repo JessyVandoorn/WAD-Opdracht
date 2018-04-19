@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
-import Navigation from './Navigation';
-import DuikPlaatsen from './DuikPlaatsen';
-import DiveMaterial from './DiveMaterial';
-import Duikerslog from './Duikerslog';
-import OverviewDives from './OverviewDives';
-import DivePlacesDetail from './DivePlacesDetail';
-import AddTopic from './AddTopic';
-import NotFound from './NotFound';
-import Dive from './models/Dive';
+import '../css/App.css';
+import Navigation from '../components/Navigation';
+import DuikPlaatsen from '../components/DuikPlaatsen';
+import DiveMaterial from '../components/DiveMaterial';
+import Duikerslog from '../components/Duikerslog';
+import OverviewDives from '../components/OverviewDives';
+import DivePlacesDetail from '../components/DivePlacesDetail';
+import AddTopic from '../components/AddTopic';
+import NotFound from '../components/NotFound';
+import Dive from '../models/Dive';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {

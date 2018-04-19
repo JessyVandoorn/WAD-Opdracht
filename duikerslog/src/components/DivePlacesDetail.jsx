@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './App.css';
+import '../css/App.css';
 import { Link } from "react-router-dom";
 
 const DivePlacesDetail = ({ place, id }) => {

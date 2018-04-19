@@ -1,5 +1,4 @@
-export default class Dive {
-   
+class Dive {
     constructor(value){
         this.Locatie = value[1];
         this.Datum = value[0];
@@ -11,3 +10,5 @@ export default class Dive {
         this.created = Date.now();
     }
 }
+
+export default Dive;
