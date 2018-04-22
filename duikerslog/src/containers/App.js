@@ -26,7 +26,7 @@ class App extends Component {
           <Route path='/DuikPlaatsen/:id' render={({ match }) => {
             const id = match.params.id;
             return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
-          }} />
+          }} /> 
           <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
           <Route component={NotFound}/>
         </Switch>

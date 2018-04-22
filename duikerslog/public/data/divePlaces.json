@@ -12,7 +12,7 @@
           "maxdepth":"test data",
           "mindepth":"test data",
           "predive":"test data",
-          "id":"18686",
+          "id":"0",
           "equipment":"test data",
           "lng":"3.3190"
        },
@@ -28,7 +28,7 @@
           "maxdepth":"test data",
           "mindepth":"test data",
           "predive":"test data",
-          "id":"24377",
+          "id":"1",
           "equipment":"test data",
           "lng":"4.3179"
        },
@@ -44,7 +44,7 @@
           "maxdepth":"test data",
           "mindepth":"test data",
           "predive":"test data",
-          "id":"18401",
+          "id":"2",
           "equipment":"test data",
           "lng":"4.3904"
        },
@@ -60,7 +60,7 @@
           "maxdepth":"test data",
           "mindepth":"test data",
           "predive":"test data",
-          "id":"18649",
+          "id":"3",
           "equipment":"test data",
           "lng":"4.0003"
        },
@@ -76,7 +76,7 @@
           "maxdepth":"test data",
           "mindepth":"test data",
           "predive":"test data",
-          "id":"21022",
+          "id":"4",
           "equipment":"test data",
           "lng":"3.8876"
        },
@@ -87,6 +87,7 @@
            "description": "Onderwaterbeleving in België in een oude steenkoolmijn",
            "maxdepth": "10m",
            "predive": "niet nodig",
+           "id":"5",
            "equipment": "zie website welk materiaal je mag gebruiken"
        }
     ]
