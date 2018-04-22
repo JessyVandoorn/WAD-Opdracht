@@ -2,7 +2,7 @@ import {observable, decorate} from "mobx";
 import uniqid from "uniqid";
 
 class Dive {
-    constructor(Locatie, Diepte, Datum, Temperatuur, Buddy, luchtStart, luchtEind){
+    constructor(Datum, Locatie, Diepte, Temperatuur, Buddy, luchtStart, luchtEind){
         this.Locatie = Locatie;
         this.Datum = Datum;
         this.Diepte = Diepte;

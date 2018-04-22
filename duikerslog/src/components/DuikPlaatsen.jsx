@@ -2,31 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
-const DuikPlaatsen = ({plaatsen}) => {
-    const renderTable = (id, plaats) => {
-        return(
-            <p className="plaatsen" key={id}>
-            <Link to={`DuikPlaatsen/${id}`}>
-            {plaats.name}
-            </Link>
-            </p>
-        )
-    }
+const DuikPlaatsen = ({ store }) => {
 
     return (
         <section>
-             <article className="locationOverview">   {Object.keys(plaatsen).map(id => renderTable(id, plaatsen[id]))} </article>
+            <article className="locationOverview">
+                {store.map(item =>
+                    <p className="plaatsen" key={item.id}>
+                        <Link to={`DuikPlaatsen/${item.id}`}>
+                            {item.name}
+                        </Link>
+                    </p>
+                )}
+            </article>
         </section>
-        
+
     )
-    
-    
+
+
 
 }
 
 DuikPlaatsen.propTypes = {
-    plaatsen: PropTypes.object.isRequired,
-    plaatsen: PropTypes.array.isRequired
+    store: PropTypes.array.isRequired
 }
 
 export default DuikPlaatsen;

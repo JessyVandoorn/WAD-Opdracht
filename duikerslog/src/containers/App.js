@@ -34,52 +34,23 @@ class App extends Component {
   //     this.setState({duiken: data});
   //   }
 
-  // handleChangeDuik = (id, duik) => {
-  //   const dives = {...this.state.duiken};
-  //   dives[id] = duik;
-  //   this.setState({duiken: dives});
-  // }
-
-  // handleDelete = (e, id) => {
-  //   const list = { ...this.state.duiken };
-  //   delete list[id];
-  //   this.setState({ duiken: list });
-    
-  // }
-
-  // handleInput = () => {
-  //   const {duiken} = this.state;
-  //   const updatedDives = {...duiken};
-  // }
-
-  // handleAddTopic = (value, callback) => {
-  //   const dive = new Dive(value);
-  //   const duiken = { ...this.state.duiken };
-  //   const id = Date.now();
-  //   duiken[id] = dive;
-  //   console.log(duiken[id]);
-  //   this.setState({ duiken }, () => callback(id));
-  // }
-
-
   render() {
-    // const {places} = this.state;
     const {store} = this.props;
     return (
       <main className="main">
         <h1><Link to="/">Duikerslog</Link></h1>
         <Navigation/>
         <Switch>
-          <Route path='/' exact render={() => <OverviewDives duiken={store} /> } />
-          {/* <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen plaatsen={places}/> } />
-          <Route path='/Duikerslog'  render={() => <Duikerslog duiken={store}/> } />
-          <Route path='/DiversTable/add' render={() => <AddTopic onAddTopic={this.handleAddTopic}/>}/>
-          <Route path='/DuikPlaatsen/:id' render={({ match }) => {
+          <Route path='/' exact render={() => <OverviewDives store={store} /> } />
+          <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store.places}/> } />
+          <Route path='/Duikerslog'  render={() => <Duikerslog store={store}/> } />
+          <Route path='/DiversTable/add' render={() => <AddTopic store={store}/>}/>
+          {/* <Route path='/DuikPlaatsen/:id' render={({ match }) => {
             const id = match.params.id;
             return places[id]?<DivePlacesDetail key={id} id={id} place={places[id]} />:<NotFound />
-          }} />
+          }} /> */}
           <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
-          <Route component={NotFound}/> */}
+          <Route component={NotFound}/>
         </Switch>
         
       </main>

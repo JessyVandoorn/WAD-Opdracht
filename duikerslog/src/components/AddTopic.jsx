@@ -5,27 +5,15 @@ import Dive from "../models/Dive";
 
 const AddTopic = ({ store, history }) => {
 
-  // let input = [];
-  // let datum = null;
-  // let locatie = null;
-  // let diepte = null;
-  // let temperatuur = null;
-  // let buddy = null;
-  // let start = null;
-  // let eind = null;
-
 
   const redirect = id => {
     history.push(`/Duikerslog`);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
+    console.log(e);
     const form = e.currentTarget;
-    // input.push(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
-    // if (datum.value && locatie.value && diepte.value && temperatuur.value && buddy.value && start.value && eind.value) {
-      // onAddTopic(input, redirect);
-    // }
     if(form.Datum.value){
       const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
       store.addDive(dive);
@@ -61,13 +49,12 @@ const AddTopic = ({ store, history }) => {
     <label htmlFor="">Lucht Eind</label>
     <input name="luchtEind" className="input-content" autoFocus />
   </div>
-    <input className="button" type="submit" value="Submit" />
+    <input className="button" type="submit" value="Toevoegen" />
   </form>
 }
 
 AddTopic.propTypes =  {
-  onAddTopic: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default withRouter(AddTopic);

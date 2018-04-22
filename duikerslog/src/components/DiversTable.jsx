@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import '../css/App.css';
 import { Link } from "react-router-dom";
 
-const DiversTable = ({duiken, onClickDelete}) => {
+const DiversTable = ({store, onClickDelete}) => {
 
     return(
         <div className="tableButton">
@@ -21,18 +21,18 @@ const DiversTable = ({duiken, onClickDelete}) => {
                     </thead>
                     <tbody>
                     {
-                        duiken && Object.keys(duiken).map(id => (
-                            <tr key={id}>
-                                <td className="td">{duiken[id].Datum}</td>
-                                <td className="td">{duiken[id].Locatie}</td>
-                                <td className="td">{duiken[id].Diepte}</td>
-                                <td className="td">{duiken[id].Temperatuur}</td>
-                                <td className="td">{duiken[id].Buddy}</td>
-                                <td className="td">{duiken[id].luchtStart}</td>
-                                <td className="td">{duiken[id].luchtEind}</td>
-                                <td className="td">
+                        store.dives.map(item => (
+                            <tr key={item.id}>
+                                <td className="td">{item.Datum}</td>
+                                <td className="td">{item.Locatie}</td>
+                                <td className="td">{item.Diepte}</td>
+                                <td className="td">{item.Temperatuur}</td>
+                                <td className="td">{item.Buddy}</td>
+                                <td className="td">{item.luchtStart}</td>
+                                <td className="td">{item.luchtEind}</td>
+                                {/* <td className="td">
                                     <button onClick={e => onClickDelete(e,id)}>Verwijderen</button>
-                                </td>
+                                </td> */}
                             </tr>
                         ))
                     }
@@ -45,7 +45,7 @@ const DiversTable = ({duiken, onClickDelete}) => {
 }
 
 DiversTable.propTypes = {
-    duiken: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired
 }
 
 export default DiversTable;
