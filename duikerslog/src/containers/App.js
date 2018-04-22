@@ -11,28 +11,6 @@ import NotFound from '../components/NotFound';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
-  // constructor(){
-  //   super()
-  //   this.state = {places:{}}
-  // }
-
-  // componentDidMount() {
-    // fetch('../data/dives.json')
-    //     .then( response => response.json())   
-    //     .then( this.parseDuiken);
-
-    //   fetch('../data/divePlaces.json')
-    //     .then(response => response.json())
-    //     .then(this.parsePlaces);
-    // };
-
-    // parsePlaces = data => {
-    //   this.setState({places: data.sites});
-    // }
-
-  //   parseDuiken = data => {
-  //     this.setState({duiken: data});
-  //   }
 
   render() {
     const {store} = this.props;
@@ -42,13 +20,13 @@ class App extends Component {
         <Navigation/>
         <Switch>
           <Route path='/' exact render={() => <OverviewDives store={store} /> } />
-          <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store.places}/> } />
+          <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
           <Route path='/Duikerslog'  render={() => <Duikerslog store={store}/> } />
           <Route path='/DiversTable/add' render={() => <AddTopic store={store}/>}/>
-          {/* <Route path='/DuikPlaatsen/:id' render={({ match }) => {
+          <Route path='/DuikPlaatsen/:id' render={({ match }) => {
             const id = match.params.id;
-            return places[id]?<DivePlacesDetail key={id} id={id} place={places[id]} />:<NotFound />
-          }} /> */}
+            return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
+          }} />
           <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
           <Route component={NotFound}/>
         </Switch>

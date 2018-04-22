@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import '../css/App.css';
 import { Link } from "react-router-dom";
 
-const DivePlacesDetail = ({ place, id }) => {
+const DivePlacesDetail = ({ store }) => {
   return <article className="topic-detail">
-    <h2 className="topic-header">{place.name}</h2>
+    <h2 className="topic-header">{store.name}</h2>
     <section className="posts">
       <div>
         <p>Omschrijving</p>
-        <p>{place.description}</p>
+        <p>{store.description}</p>
       </div>
 
       <div className="plaatsen updatePlaats">
 
-        <p>Afstand van Gent: {place.distance}km</p>
-        <p>Onderwaterleven: {place.marinelife}</p>
+        <p>Afstand van Gent: {store.distance}km</p>
+        <p>Onderwaterleven: {store.marinelife}</p>
 
-        <p>Maximale diepte: {place.maxdepth}m</p>
-        <p>Minimale diepte: {place.mindepth}m</p>
+        <p>Maximale diepte: {store.maxdepth}m</p>
+        <p>Minimale diepte: {store.mindepth}m</p>
       </div>
     </section>
     <Link to="/DuikPlaatsen">Ga Terug</Link>
@@ -28,7 +28,7 @@ const DivePlacesDetail = ({ place, id }) => {
 
 DivePlacesDetail.propTypes = {
   id: PropTypes.string.isRequired,
-  place: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 }
 
 export default DivePlacesDetail;

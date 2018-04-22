@@ -7,7 +7,7 @@ const DuikPlaatsen = ({ store }) => {
     return (
         <section>
             <article className="locationOverview">
-                {store.map(item =>
+                {store.places.map(item =>
                     <p className="plaatsen" key={item.id}>
                         <Link to={`DuikPlaatsen/${item.id}`}>
                             {item.name}
@@ -24,7 +24,8 @@ const DuikPlaatsen = ({ store }) => {
 }
 
 DuikPlaatsen.propTypes = {
-    store: PropTypes.array.isRequired
+    store: PropTypes.array.isRequired,
+    store: PropTypes.object.isRequired
 }
 
 export default DuikPlaatsen;
