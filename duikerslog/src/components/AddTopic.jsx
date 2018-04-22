@@ -1,17 +1,18 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
+import Dive from "../models/Dive";
 
-const AddTopic = ({ onAddTopic, history }) => {
+const AddTopic = ({ store, history }) => {
 
-  let input = [];
-  let datum = null;
-  let locatie = null;
-  let diepte = null;
-  let temperatuur = null;
-  let buddy = null;
-  let start = null;
-  let eind = null;
+  // let input = [];
+  // let datum = null;
+  // let locatie = null;
+  // let diepte = null;
+  // let temperatuur = null;
+  // let buddy = null;
+  // let start = null;
+  // let eind = null;
 
 
   const redirect = id => {
@@ -20,42 +21,45 @@ const AddTopic = ({ onAddTopic, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    input.push(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
-    console.log(input);
-    console.log(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
+    const form = e.currentTarget;
+    // input.push(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
     // if (datum.value && locatie.value && diepte.value && temperatuur.value && buddy.value && start.value && eind.value) {
-      onAddTopic(input, redirect);
+      // onAddTopic(input, redirect);
     // }
+    if(form.Datum.value){
+      const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
+      store.addDive(dive);
+    }
   }
 
   return <form onSubmit={handleSubmit}>
   <div>
     <label htmlFor="">Datum</label>
-    <input className="input-content" autoFocus ref={field => datum = field} />
+    <input name="Datum" className="input-content" autoFocus/>
   </div>
   <div>
     <label htmlFor="">Locatie</label>
-    <input className="input-content" autoFocus ref={field => locatie = field} />
+    <input name="Locatie" className="input-content" autoFocus  />
   </div>
   <div>
     <label htmlFor="">Diepte</label>
-    <input className="input-content" autoFocus ref={field => diepte = field} />
+    <input name="Diepte" className="input-content" autoFocus />
   </div>
   <div>
     <label htmlFor="">Temperatuur</label>
-    <input className="input-content" autoFocus ref={field => temperatuur = field} />
+    <input name="Temperatuur" className="input-content" autoFocus />
   </div>
   <div>
     <label htmlFor="">Buddy</label>
-    <input className="input-content" autoFocus ref={field => buddy = field} />
+    <input name="Buddy" className="input-content" autoFocus />
   </div>
   <div>
     <label htmlFor="">Lucht Start</label>
-    <input className="input-content" autoFocus ref={field => start = field} />
+    <input name="luchtStart" className="input-content" autoFocus />
   </div>
   <div>
     <label htmlFor="">Lucht Eind</label>
-    <input className="input-content" autoFocus ref={field => eind = field} />
+    <input name="luchtEind" className="input-content" autoFocus />
   </div>
     <input className="button" type="submit" value="Submit" />
   </form>
