@@ -12,42 +12,44 @@ const AddTopic = ({ store, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e);
     const form = e.currentTarget;
     if(form.Datum.value){
       const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
-      store.addDive(dive);
+      store.addDive(new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value));
+      console.log(dive);
+      form.reset();
+      redirect(dive.id);
     }
   }
 
   return <form onSubmit={handleSubmit}>
   <div>
     <label htmlFor="">Datum</label>
-    <input name="Datum" className="input-content" autoFocus/>
+    <input name="Datum" className="input-content" />
   </div>
   <div>
     <label htmlFor="">Locatie</label>
-    <input name="Locatie" className="input-content" autoFocus  />
+    <input name="Locatie" className="input-content"   />
   </div>
   <div>
     <label htmlFor="">Diepte</label>
-    <input name="Diepte" className="input-content" autoFocus />
+    <input name="Diepte" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Temperatuur</label>
-    <input name="Temperatuur" className="input-content" autoFocus />
+    <input name="Temperatuur" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Buddy</label>
-    <input name="Buddy" className="input-content" autoFocus />
+    <input name="Buddy" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Lucht Start</label>
-    <input name="luchtStart" className="input-content" autoFocus />
+    <input name="luchtStart" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Lucht Eind</label>
-    <input name="luchtEind" className="input-content" autoFocus />
+    <input name="luchtEind" className="input-content"  />
   </div>
     <input className="button" type="submit" value="Toevoegen" />
   </form>

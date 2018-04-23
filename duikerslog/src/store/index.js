@@ -15,11 +15,11 @@ class Store {
 
     addDive = dive => {
         this.dives.push(dive);
+        console.log(dive);
     }
 
     addPlace = item => {
         this.places.push(item);
-        console.log(this.places);
     }
 
     get url(){
@@ -35,7 +35,6 @@ class Store {
     parsePlaces = data => {
         data.sites.forEach(item => {
             this.addPlace(item);
-            console.log(item);
         })
     }
 
