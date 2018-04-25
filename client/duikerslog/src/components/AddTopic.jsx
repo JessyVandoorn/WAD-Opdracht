@@ -1,10 +1,13 @@
 import React from 'react';
+import { observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import Dive from "../models/Dive";
 
 const AddTopic = ({ store, history }) => {
+  const {add, content} = store;
 
+  // let input = React.createRef();
 
   const redirect = id => {
     history.push(`/Duikerslog`);
@@ -14,13 +17,17 @@ const AddTopic = ({ store, history }) => {
     e.preventDefault();
     const form = e.currentTarget;
     if(form.Datum.value){
-      const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
-      store.addDive(new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value));
-      console.log(dive);
-      form.reset();
-      redirect(dive.id);
+    //   const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
+    //   store.addDive(new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value));
+    //   console.log(dive);
+    //   form.reset();
+    //   redirect(dive.id);
+      add(content);
+      console.log(content);
     }
-  }
+    
+    // input.current.focus()
+  };
 
   return <form onSubmit={handleSubmit}>
   <div>
@@ -59,5 +66,5 @@ AddTopic.propTypes =  {
   history: PropTypes.object.isRequired
 }
 
-export default withRouter(AddTopic);
+export default observer(withRouter(AddTopic));
 

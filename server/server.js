@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   });
 });
 
-require("./app/routes/tweet.routes.js")(app);
+require("./app/routes/dive.routes.js")(app);
 
 app.listen(4000, () => {
   console.log("Server luistert op poort 4000");
