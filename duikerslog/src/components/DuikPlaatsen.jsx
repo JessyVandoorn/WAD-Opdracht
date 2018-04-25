@@ -24,7 +24,6 @@ const DuikPlaatsen = ({ store }) => {
 }
 
 DuikPlaatsen.propTypes = {
-    store: PropTypes.array.isRequired,
     store: PropTypes.object.isRequired
 }
 
