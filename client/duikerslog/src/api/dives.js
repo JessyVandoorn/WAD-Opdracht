@@ -1,13 +1,14 @@
 class Api {
-    url = 'http://http://localhost:4000/dives';
+    url = 'http://localhost:4000/dives';
 
-    create = content => {
+    create = (datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind) => {
+        console.log(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind);
         return fetch(this.url, {
             method: 'POST',
             headers:{
                 "content-type":"application/json"
             },
-            body: JSON.stringify({ content })
+            body: JSON.stringify({ datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind })
         })
         .then(r => r.json());
     }

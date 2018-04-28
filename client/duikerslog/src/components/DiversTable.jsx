@@ -21,7 +21,7 @@ const DiversTable = ({store, onClickDelete}) => {
                     </thead>
                     <tbody>
                     {
-                        store.dives.map(item => (
+                        store.duiken.map(item => (
                             <tr key={item.id}>
                                 <td className="td">{item.Datum}</td>
                                 <td className="td">{item.Locatie}</td>

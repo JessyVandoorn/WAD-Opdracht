@@ -2,10 +2,9 @@ import React from 'react';
 import { observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
-import Dive from "../models/Dive";
 
 const AddTopic = ({ store, history }) => {
-  const {add, content} = store;
+  const {add, duiken} = store;
 
   // let input = React.createRef();
 
@@ -15,40 +14,40 @@ const AddTopic = ({ store, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
-    if(form.Datum.value){
+    // const form = e.currentTarget;
+    // if(form.Datum.value){
     //   const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
     //   store.addDive(new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value));
     //   console.log(dive);
     //   form.reset();
     //   redirect(dive.id);
-      add(content);
-      console.log(content);
-    }
-    
+     
+    // }
+    add(duiken);
+    console.log(duiken);
     // input.current.focus()
   };
 
   return <form onSubmit={handleSubmit}>
   <div>
     <label htmlFor="">Datum</label>
-    <input name="Datum" className="input-content" />
+    <input name="datum" className="input-content" />
   </div>
   <div>
     <label htmlFor="">Locatie</label>
-    <input name="Locatie" className="input-content"   />
+    <input name="locatie" className="input-content"   />
   </div>
   <div>
     <label htmlFor="">Diepte</label>
-    <input name="Diepte" className="input-content"  />
+    <input name="diepte" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Temperatuur</label>
-    <input name="Temperatuur" className="input-content"  />
+    <input name="temperatuur" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Buddy</label>
-    <input name="Buddy" className="input-content"  />
+    <input name="buddy" className="input-content"  />
   </div>
   <div>
     <label htmlFor="">Lucht Start</label>

@@ -6,7 +6,7 @@ const OverviewDives = ({ store }) => {
     return (
         <div className="divesOverview">
             {
-                store.dives.map(item =>
+                store.duiken.map(item =>
                     <section key={item.id} className="paddingOverview">
                         <h3>{item.Locatie}</h3>
                         <div className="dateBuddy">

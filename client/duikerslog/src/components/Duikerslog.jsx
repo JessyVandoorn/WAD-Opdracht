@@ -3,6 +3,7 @@ import DiversTable from './DiversTable';
 import PropTypes from 'prop-types';
 
 const Duikerslog = ({store}) => {
+
   return (
     <section>
     <DiversTable store={store} onChangeDuik={this.handleChangeDuik} onClickDelete={this.handleDelete}/>
