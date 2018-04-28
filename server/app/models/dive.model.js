@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const DiveSchema = mongoose.Schema(
     {
-        Datum: String,
-        Locatie: String,
-        Diepte: Number,
-        Temperatuur: Number,
-        Buddy: String,
+        datum: String,
+        locatie: String,
+        buddy: String,
+        temperatuur: Number,
+        diepte: Number,
         luchtStart: Number,
         luchtEind: Number
     }, {
