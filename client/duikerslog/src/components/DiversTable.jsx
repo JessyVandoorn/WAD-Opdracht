@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import '../css/App.css';
 import { Link } from "react-router-dom";
 
-const DiversTable = ({store, onClickDelete}) => {
+const DiversTable = ({store}) => {
+
+const handleClickRemove = (dive) => {
+    store.remove(dive);
+}
     return(
         <div className="tableButton">
             <table>
@@ -29,9 +33,9 @@ const DiversTable = ({store, onClickDelete}) => {
                                 <td className="td">{item.buddy}</td>
                                 <td className="td">{item.luchtStart}</td>
                                 <td className="td">{item.luchtEind}</td>
-                                {/* <td className="td">
-                                    <button onClick={e => onClickDelete(e,id)}>Verwijderen</button>
-                                </td> */}
+                                <td className="td"> 
+                                    <button onClick={() => handleClickRemove(item._id)}>Verwijderen</button>
+                                </td> 
                             </tr>
                         ))
                     }

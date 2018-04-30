@@ -13,14 +13,25 @@ class Store {
         this.api.getAll().then(dives => this._add(...dives));
     }
 
-    add = value => {
-        this.api.create(value).then(dive => this._add(dive));
+    add = (datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind) => {
+        // const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind} = value;
+        this.api.create(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind).then(dive => this._add(dive));
     }
 
-    _add = dive => {
-        const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id} = dive;
-        this.dives.push(new Dive(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id));
+    _add = (...dives) => {
+        dives.forEach(dive => {
+            const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id} = dive;
+            this.dives.push(new Dive(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id));
+        })
     }
+
+    remove = dive => {
+        this.api.remove(dive).then(() => this._remove(dive));
+      };
+    
+      _remove = dive => {
+        this.dives.remove(dive);
+      };
 
     addPlace = item => {
         this.places.push(item);

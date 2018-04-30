@@ -6,7 +6,7 @@ const Duikerslog = ({store}) => {
 
   return (
     <section>
-    <DiversTable store={store} onChangeDuik={this.handleChangeDuik} onClickDelete={this.handleDelete}/>
+    <DiversTable store={store} />
     </section>
     
 )  

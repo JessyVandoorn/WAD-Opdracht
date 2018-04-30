@@ -6,7 +6,7 @@ import DiveMaterial from '../components/DiveMaterial';
 import Duikerslog from '../components/Duikerslog';
 import OverviewDives from '../components/OverviewDives';
 import DivePlacesDetail from '../components/DivePlacesDetail';
-import AddTopic from '../components/AddTopic';
+import AddDive from '../components/AddDive';
 import NotFound from '../components/NotFound';
 import { Route, Switch, Link } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ class App extends Component {
           <Route path='/' exact render={() => <OverviewDives store={store} /> } />
           <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
           <Route path='/Duikerslog'  render={() => <Duikerslog store={store}/> } />
-          <Route path='/DiversTable/add' render={() => <AddTopic store={store}/>}/>
+          <Route path='/DiversTable/add' render={() => <AddDive store={store}/>}/>
           <Route path='/DuikPlaatsen/:id' render={({ match }) => {
             const id = match.params.id;
             return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />

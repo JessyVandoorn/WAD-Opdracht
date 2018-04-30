@@ -69,3 +69,25 @@ const Dive = require("../models/dive.model");
                 });
               });
     };
+
+exports.delete = (req, res) => {
+    Dive.findByIdAndRemove(req.params.diveId)
+    .then(dive => {
+      if (!dive) {
+        return res.status(404).send({
+          message: "Dive not found with id " + req.params.diveId
+        });
+      }
+      res.send({ message: "Dive deleted successfully!" });
+    })
+    .catch(err => {
+      if (err.kind === "ObjectId" || err.name === "NotFound") {
+        return res.status(404).send({
+          message: "Dive not found with id " + req.params.diveId
+        });
+      }
+      return res.status(500).send({
+        message: "Could not delete dive with id " + req.params.diveId
+      });
+    });
+}
