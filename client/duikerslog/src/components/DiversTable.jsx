@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const DiversTable = ({store}) => {
 
-const handleClickRemove = (dive) => {
-    store.remove(dive);
+const handleClickRemove = (item) => {
+    store.remove(item);
 }
     return(
         <div className="tableButton">
@@ -34,7 +34,7 @@ const handleClickRemove = (dive) => {
                                 <td className="td">{item.luchtStart}</td>
                                 <td className="td">{item.luchtEind}</td>
                                 <td className="td"> 
-                                    <button onClick={() => handleClickRemove(item._id)}>Verwijderen</button>
+                                    <button onClick={() => handleClickRemove(item)}>Verwijderen</button>
                                 </td> 
                             </tr>
                         ))
