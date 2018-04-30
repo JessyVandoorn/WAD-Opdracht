@@ -3,7 +3,37 @@ const Dive = require("../models/dive.model");
     exports.create = (req, res) => {
         if(!req.body.datum){
             return res.status(400).send({
-                message: "Dive can not be empty"
+                message: "datum can not be empty"
+            });
+        }
+            if(!req.body.locatie){
+                return res.status(400).send({
+                    message: "locatie can not be empty"
+            });
+        }
+            if(!req.body.diepte){
+                return res.status(400).send({
+                    message: "diepte can not be empty"
+            });
+        }
+            if(!req.body.temperatuur){
+                return res.status(400).send({
+                    message: "temperatuur can not be empty"
+            });
+        }
+            if(!req.body.buddy){
+                return res.status(400).send({
+                    message: "buddy can not be empty"
+            });
+        }
+            if(!req.body.luchtStart){
+                return res.status(400).send({
+                    message: "luchtStart can not be empty"
+            });
+        }
+            if(!req.body.luchtEind){
+                return res.status(400).send({
+                    message: "luchtEind can not be empty"
             });
         }
 
@@ -27,7 +57,7 @@ const Dive = require("../models/dive.model");
                 message: err.message || "Error"
             });
         });
-    } 
+}
     exports.findAll = (req, res) => {
             Dive.find()
               .then(dives => {

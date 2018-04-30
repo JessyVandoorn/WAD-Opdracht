@@ -4,7 +4,7 @@ import '../css/App.css';
 import { Link } from "react-router-dom";
 
 const DiversTable = ({store, onClickDelete}) => {
-
+    console.log(store.dives);
     return(
         <div className="tableButton">
             <table>
@@ -21,13 +21,13 @@ const DiversTable = ({store, onClickDelete}) => {
                     </thead>
                     <tbody>
                     {
-                        store.duiken.map(item => (
+                        store.dives.map(item => (
                             <tr key={item.id}>
-                                <td className="td">{item.Datum}</td>
-                                <td className="td">{item.Locatie}</td>
-                                <td className="td">{item.Diepte}</td>
-                                <td className="td">{item.Temperatuur}</td>
-                                <td className="td">{item.Buddy}</td>
+                                <td className="td">{item.datum}</td>
+                                <td className="td">{item.locatie}</td>
+                                <td className="td">{item.diepte}</td>
+                                <td className="td">{item.temperatuur}</td>
+                                <td className="td">{item.buddy}</td>
                                 <td className="td">{item.luchtStart}</td>
                                 <td className="td">{item.luchtEind}</td>
                                 {/* <td className="td">

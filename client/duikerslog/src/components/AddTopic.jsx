@@ -4,9 +4,8 @@ import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const AddTopic = ({ store, history }) => {
-  const {add, duiken} = store;
+  const {add, dives} = store;
 
-  // let input = React.createRef();
 
   const redirect = id => {
     history.push(`/Duikerslog`);
@@ -14,18 +13,9 @@ const AddTopic = ({ store, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const form = e.currentTarget;
-    // if(form.Datum.value){
-    //   const dive = new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value);
-    //   store.addDive(new Dive(form.Datum.value, form.Locatie.value, form.Buddy.value, form.Diepte.value, form.Temperatuur.value, form.luchtStart.value, form.luchtEind.value));
-    //   console.log(dive);
-    //   form.reset();
     //   redirect(dive.id);
-     
-    // }
-    add(duiken);
-    console.log(duiken);
-    // input.current.focus()
+    add(dives);
+    console.log(dives);
   };
 
   return <form onSubmit={handleSubmit}>

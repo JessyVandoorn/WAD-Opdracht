@@ -1,15 +1,16 @@
 import Api from "../api/dives.js";
-import Dive from '../models/Dive';
+import Dive from '../models/Dive.js';
 import {decorate, observable} from 'mobx';
 
 class Store {
 
-    duiken = [];
+    dives = [];
     places = [];
 
     constructor(){
         this.fetchFromApi();
         this.api = new Api();
+        this.api.getAll().then(dives => this._add(...dives));
     }
 
     add = value => {
@@ -18,7 +19,8 @@ class Store {
 
     _add = dive => {
         const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id} = dive;
-        this.duiken.push(new Dive(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id));
+        this.dives.push(new Dive(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id));
+        console.log(dive);
     }
 
     addPlace = item => {

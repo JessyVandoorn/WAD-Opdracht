@@ -6,12 +6,12 @@ const OverviewDives = ({ store }) => {
     return (
         <div className="divesOverview">
             {
-                store.duiken.map(item =>
+                store.dives.map(item =>
                     <section key={item.id} className="paddingOverview">
-                        <h3>{item.Locatie}</h3>
+                        <h3>{item.locatie}</h3>
                         <div className="dateBuddy">
-                            <p>{item.Datum}</p>
-                            <p>{item.Buddy}</p>
+                            <p>{item.datum}</p>
+                            <p>{item.buddy}</p>
                         </div>
                         <br />
                     </section>

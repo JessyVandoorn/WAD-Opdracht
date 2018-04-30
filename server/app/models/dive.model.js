@@ -9,8 +9,6 @@ const DiveSchema = mongoose.Schema(
         diepte: Number,
         luchtStart: Number,
         luchtEind: Number
-    }, {
-        timestamps: true
     }
 );
 

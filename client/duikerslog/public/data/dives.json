@@ -1,28 +1,28 @@
 {
   "1": {
-    "Datum": "15 oktober",
-    "Locatie": "Todi",
-    "Diepte": 10,
-    "Temperatuur": 24,
-    "Buddy": "Jeroen",
+    "datum": "15 oktober",
+    "locatie": "Todi",
+    "diepte": 10,
+    "temperatuur": 24,
+    "buddy": "Jeroen",
     "luchtStart": 300,
     "luchtEind": 100
   },
   "2": {
-    "Datum": "6 augustus",
-    "Locatie": "Grote Hegge",
-    "Diepte": 10,
-    "Temperatuur": 22,
-    "Buddy": "JeanClaude",
+    "datum": "6 augustus",
+    "locatie": "Grote Hegge",
+    "diepte": 10,
+    "temperatuur": 22,
+    "buddy": "JeanClaude",
     "luchtStart": 300,
     "luchtEind": 100
   },
   "3": {
-    "Datum":"6 mei",
-    "Locatie": "Oesterhaven",
-    "Diepte": 10,
-    "Temperatuur": 20,
-    "Buddy": "Gilles",
+    "datum":"6 mei",
+    "locatie": "Oesterhaven",
+    "diepte": 10,
+    "temperatuur": 20,
+    "buddy": "Gilles",
     "luchtStart": 300,
     "luchtEind": 100
   }
