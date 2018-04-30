@@ -20,7 +20,6 @@ class Store {
     _add = dive => {
         const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id} = dive;
         this.dives.push(new Dive(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, _id));
-        console.log(dive);
     }
 
     addPlace = item => {

@@ -4,7 +4,6 @@ import '../css/App.css';
 import { Link } from "react-router-dom";
 
 const DiversTable = ({store, onClickDelete}) => {
-    console.log(store.dives);
     return(
         <div className="tableButton">
             <table>

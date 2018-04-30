@@ -14,7 +14,6 @@ class App extends Component {
 
   render() {
     const {store} = this.props;
-    console.log(store.dives);
     return (
       <main className="main">
         <h1><Link to="/">Duikerslog</Link></h1>
