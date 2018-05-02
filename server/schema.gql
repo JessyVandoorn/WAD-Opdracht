@@ -1,0 +1,29 @@
+module.exports = `
+    type Dive {
+        _id: String
+        datum: String
+        locatie: String
+        temperatuur: Int
+        diepte: Float
+        buddy: String
+        luchtStart: Int
+        luchtEind: Int
+    }
+
+    type Query {
+        allDives: [Dive]
+        dive(_id:String!):Dive
+    }
+
+    type Mutation {
+        addDive(
+            datum: String
+            locatie: String
+            temperatuur: Int
+            diepte: Float
+            buddy: String
+            luchtStart: Int
+            luchtEind: Int
+        ):Dive
+    }
+`

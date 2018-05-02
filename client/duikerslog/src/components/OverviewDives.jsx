@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {observer} from "mobx-react";
 
-const OverviewDives = ({ store }) => {
+const OverviewDives = ({ dives }) => {
     return (
         <div className="divesOverview">
             {
-                store.dives.map(item =>
+                dives.map(item =>
                     <section key={item.id} className="paddingOverview">
                         <h3>{item.locatie}</h3>
                         <div className="dateBuddy">
@@ -22,7 +21,7 @@ const OverviewDives = ({ store }) => {
 }
 
 OverviewDives.propTypes = {
-    store: PropTypes.object.isRequired
+    dives: PropTypes.array.isRequired
 }
 
-export default observer(OverviewDives);
+export default OverviewDives;

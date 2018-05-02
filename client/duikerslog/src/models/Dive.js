@@ -1,4 +1,3 @@
-import {observable, decorate} from "mobx";
 import uniqid from "uniqid";
 
 class Dive {
@@ -15,15 +14,5 @@ class Dive {
         this.id = id;
     }
 }
-
-decorate(Dive, {
-    locatie: observable,
-    datum: observable,
-    diepte: observable,
-    temperatuur: observable,
-    buddy: observable,
-    luchtStart: observable,
-    luchtEind: observable
-  });
 
 export default Dive;

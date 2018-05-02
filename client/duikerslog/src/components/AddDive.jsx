@@ -1,10 +1,8 @@
 import React from 'react';
-import { observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-const AddTopic = ({ store, history }) => {
-  const {add} = store;
+const AddTopic = ({ history }) => {
 
   let datum = null;
   let locatie = null;
@@ -20,7 +18,7 @@ const AddTopic = ({ store, history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    add(datum.value, locatie.value, diepte.value, temperatuur.value, buddy.value, start.value, eind.value);
+    console.log(e);
     redirect();
   };
 
@@ -61,5 +59,5 @@ AddTopic.propTypes =  {
   history: PropTypes.object.isRequired
 }
 
-export default observer(withRouter(AddTopic));
+export default withRouter(AddTopic);
 
