@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Duikerslog = ({dives}) => {
 
-  const handleClickRemove = (dive) => {
-    dives.remove(dive);
-}
+//   const handleClickRemove = (dive) => {
+//     dives.remove(dive);
+// }
     return(
         <div className="tableButton">
             <table>
@@ -32,9 +32,9 @@ const Duikerslog = ({dives}) => {
                                 <td className="td">{dive.buddy}</td>
                                 <td className="td">{dive.luchtStart}</td>
                                 <td className="td">{dive.luchtEind}</td>
-                                <td className="td"> 
+                                {/* <td className="td"> 
                                     <button onClick={() => handleClickRemove(dive)}>Verwijderen</button>
-                                </td> 
+                                </td>  */}
                             </tr>
                         ))
                     }

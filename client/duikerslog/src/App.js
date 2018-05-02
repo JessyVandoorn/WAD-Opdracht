@@ -30,7 +30,7 @@ class App extends Component {
             <Route path='/' exact render={() => <OverviewDives dives={allDives} /> } /> 
             {/* <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } /> */}
             <Route path='/Duikerslog'  render={() => <Duikerslog dives={allDives}/> } />
-            {/* <Route path='/DiversTable/add' render={() => <AddDive />}/>  */}
+            <Route path='/DiversTable/add' render={() => <AddDive />}/> 
             {/* <Route path='/DuikPlaatsen/:id' render={({ match }) => {
               const id = match.params.id;
               return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
