@@ -4,7 +4,7 @@ import uniqid from "uniqid";
 class Dive {
     
 
-    constructor(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind){
+    constructor(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind, id = null){
         this.locatie = locatie;
         this.datum = datum;
         this.diepte = diepte;
@@ -12,7 +12,7 @@ class Dive {
         this.buddy = buddy;
         this.luchtStart = luchtStart;
         this.luchtEind = luchtEind;
-        this.id = uniqid();
+        this.id = id;
     }
 }
 

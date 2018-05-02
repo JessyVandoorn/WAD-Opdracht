@@ -70,9 +70,32 @@ const Dive = require("../models/dive.model");
               });
     };
 
+    exports.findOne = (req, res) => {
+        Dive.findById(req.params.tweetId)
+          .then(dive => {
+            if (!dive) {
+              return res.status(404).send({
+                message: "dive not found with id " + req.params.diveId
+              });
+            }
+            res.send(dive);
+          })
+          .catch(err => {
+            if (err.kind === "ObjectId") {
+              return res.status(404).send({
+                message: "dive not found with id " + req.params.diveId
+              });
+            }
+            return res.status(500).send({
+              message: "Error retrieving dive with id " + req.params.diveId
+            });
+          });
+      };
+
 exports.delete = (req, res) => {
     Dive.findByIdAndRemove(req.params.diveId)
     .then(dive => {
+        console.log(diveId);
       if (!dive) {
         return res.status(404).send({
           message: "Dive not found with id " + req.params.diveId

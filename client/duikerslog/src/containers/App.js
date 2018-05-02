@@ -8,7 +8,8 @@ import OverviewDives from '../components/OverviewDives';
 import DivePlacesDetail from '../components/DivePlacesDetail';
 import AddDive from '../components/AddDive';
 import NotFound from '../components/NotFound';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import { observer, Observer } from "mobx-react";
 
 class App extends Component {
 
@@ -21,7 +22,11 @@ class App extends Component {
         <Switch>
           <Route path='/' exact render={() => <OverviewDives store={store} /> } />
           <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
-          <Route path='/Duikerslog'  render={() => <Duikerslog store={store}/> } />
+          <Route path='/Duikerslog'  render={() =>
+            <Observer> 
+              {() => <Duikerslog store={store}/> }
+            </Observer>
+          } />
           <Route path='/DiversTable/add' render={() => <AddDive store={store}/>}/>
           <Route path='/DuikPlaatsen/:id' render={({ match }) => {
             const id = match.params.id;
@@ -36,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(observer(App));

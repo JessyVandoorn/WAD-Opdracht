@@ -14,7 +14,6 @@ class Store {
     }
 
     add = (datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind) => {
-        // const {datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind} = value;
         this.api.create(datum, locatie, diepte, temperatuur, buddy, luchtStart, luchtEind).then(dive => this._add(dive));
     }
 
