@@ -5,8 +5,8 @@ const OverviewDives = ({ dives }) => {
     return (
         <div className="divesOverview">
             {
-                dives.map(item =>
-                    <section key={item.id} className="paddingOverview">
+                dives.map((item, index) =>
+                    <section key={index} className="paddingOverview">
                         <h3>{item.locatie}</h3>
                         <div className="dateBuddy">
                             <p>{item.datum}</p>

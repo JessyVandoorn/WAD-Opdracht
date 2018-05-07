@@ -29,7 +29,8 @@ const AddDive = ({ history }) => {
         query: GET_DIVE,
         data
       })
-      }}
+      }
+    }
     >
     {(addDive) => (
       <form onSubmit={
