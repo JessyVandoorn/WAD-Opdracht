@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "./css/index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import store from './store'
 import registerServiceWorker from './registerServiceWorker';
 
 import ApolloClient  from 'apollo-boost';
@@ -13,7 +14,7 @@ const client = new ApolloClient({uri: "http://localhost:4000/graphql"});
 ReactDOM.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <App />
+      <App store={store}/>
     </BrowserRouter>
   </ApolloProvider>, 
   document.getElementById('root')

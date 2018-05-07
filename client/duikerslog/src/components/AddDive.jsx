@@ -19,12 +19,6 @@ const AddDive = ({ history }) => {
     history.push(`/Duikerslog`);
   }
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(e);
-    redirect();
-  };
-
   return (
     <Mutation mutation={ADD_DIVE} update={(cache, {data:{addDive}}) => {
       const data = cache.readQuery({
@@ -40,8 +34,10 @@ const AddDive = ({ history }) => {
     {(addDive) => (
       <form onSubmit={
         (e) => {
+          e.preventDefault();
           if(datum.value){
-            addDive({variables: {datum: datum.value, locatie: locatie.value, diepte: diepte.value, temperatuur: temperatuur.value, buddy: buddy.value, luchtStart:start.value, luchtEind: eind.value}})
+            addDive({variables: {datum: datum.value, locatie: locatie.value, diepte: diepte.value, temperatuur: temperatuur.value, buddy: buddy.value, luchtStart:start.value, luchtEind: eind.value}});
+            redirect();
           }
         }
       }>

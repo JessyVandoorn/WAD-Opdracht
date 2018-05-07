@@ -16,6 +16,7 @@ import GET_ALL_DIVES from "./graphql/getAllDives";
 class App extends Component {
 
   render() {
+    const {store} = this.props;
     return (
       <main className="main">
         <h1><Link to="/">Duikerslog</Link></h1>
@@ -28,13 +29,13 @@ class App extends Component {
               return(
           <Switch>
             <Route path='/' exact render={() => <OverviewDives dives={allDives} /> } /> 
-            {/* <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } /> */}
+            <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
             <Route path='/Duikerslog'  render={() => <Duikerslog dives={allDives}/> } />
             <Route path='/DiversTable/add' render={() => <AddDive />}/> 
-            {/* <Route path='/DuikPlaatsen/:id' render={({ match }) => {
+            <Route path='/DuikPlaatsen/:id' render={({ match }) => {
               const id = match.params.id;
               return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
-            }} />  */}
+            }} /> 
             <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
             <Route component={NotFound}/> 
           </Switch>
