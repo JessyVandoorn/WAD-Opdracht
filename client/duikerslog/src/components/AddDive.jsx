@@ -41,7 +41,7 @@ const AddDive = ({ history }) => {
       <form onSubmit={
         (e) => {
           if(datum.value){
-            addDive({variables: {datum: datum.input, locatie: locatie.input, diepte: diepte.input, temperatuur: temperatuur.input, buddy: buddy.input, luchtStart:start.input, luchtEind: eind.input}})
+            addDive({variables: {datum: datum.value, locatie: locatie.value, diepte: diepte.value, temperatuur: temperatuur.value, buddy: buddy.value, luchtStart:start.value, luchtEind: eind.value}})
           }
         }
       }>
