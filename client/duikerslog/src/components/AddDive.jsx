@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { Mutation } from "react-apollo";
 import ADD_DIVE from "../graphql/addDive";
-import GET_DIVE from "../graphql/getDive";
+import GET_ALLDIVES from "../graphql/getAllDives";
 
 const AddDive = ({ history }) => {
 
@@ -20,17 +20,18 @@ const AddDive = ({ history }) => {
   }
 
   return (
-    <Mutation mutation={ADD_DIVE} update={(cache, {data:{addDive}}) => {
-      const data = cache.readQuery({
-        query: GET_DIVE
-      });
-      data.dives.push(addDive);
-      cache.writeQuery({
-        query: GET_DIVE,
-        data
-      })
-      }
-    }
+    <Mutation
+      mutation={ADD_DIVE}
+      update={(cache, {data: {addDive}}) => {
+        const data = cache.readQuery({
+          query: GET_ALLDIVES
+        });
+        data.allDives.push(addDive);
+        cache.writeQuery({
+          query: GET_ALLDIVES,
+          data
+        });
+      }}
     >
     {(addDive) => (
       <form onSubmit={
