@@ -12,6 +12,7 @@ import { Route, Switch, Link, withRouter } from 'react-router-dom';
 
 import {Query} from "react-apollo";
 import GET_ALL_DIVES from "./graphql/getAllDives";
+import User from "./components/User";
 
 class App extends Component {
 
@@ -43,6 +44,7 @@ class App extends Component {
               }
             }
       </Query>
+      <User />
       </main>
     );
   }
