@@ -45,3 +45,16 @@
     * views opsplitsen
     * Items toevoegen
     * Navigatie werkend maken
+
+### week 6: statemanagement
+    * store toevoegen
+    * gebruik maken van @observable, @action, @computed en @observer
+    * werken met models
+
+### week 7: MongoDB
+    * basis api opzetten
+    * express en MongoDB gebruiken
+
+### week 8: apollo
+    * graphql implementeren
+    * apollo-server en apollo-client
