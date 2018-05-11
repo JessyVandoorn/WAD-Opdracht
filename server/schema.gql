@@ -37,6 +37,9 @@ module.exports = `
         ):Dive
         login(email: String!, password: String!):User
         register(email: String!, password: String!,name: String!,):User
+        deleteDive(
+      _id: String!
+    ): Dive
     }
     scalar Date
 `

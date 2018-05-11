@@ -1,14 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
+import DELETE_DIVE from "../graphql/addDive";
+import GET_ALLDIVES from "../graphql/getAllDives";
+import { Mutation } from "react-apollo";
 
 const Duikerslog = ({dives}) => {
 
-  const handleClickRemove = (dive) => {
-    dives.remove(dive);
-}
+    // const handleDelete = e => {
+    //     console.log(e)
+    //     deleteDive({ variables: { id: dive._id } });
+    //   };
+
     return(
         <div className="tableButton">
+        <Mutation
+      mutation={DELETE_DIVE}
+      update={(cache, {data: {deleteDive}}) => {
+        const data = cache.readQuery({
+          query: GET_ALLDIVES
+        });
+        data.allDives = data.allDives.filter(
+            dive => dive._id !== deleteDive._id
+          );
+        cache.writeQuery({
+          query: GET_ALLDIVES,
+          data
+        });
+      }}
+    >
+    {(deleteDive) => (
             <table>
                     <thead>
                         <tr>
@@ -33,14 +54,19 @@ const Duikerslog = ({dives}) => {
                                 <td className="td">{dive.luchtStart}</td>
                                 <td className="td">{dive.luchtEind}</td>
                                 <td className="td"> 
-                                    <button onClick={() => handleClickRemove(dive)}>Verwijderen</button>
+                                    <button onClick={e => {
+                                        console.log("verwijderen")
+                                        deleteDive({variables: {id: dive._id}})
+                                    }}>Verwijderen</button>
                                 </td> 
                             </tr>
                         ))
                     }
                     </tbody>
                 </table>
-
+            )
+    }
+  </Mutation>
                 <Link to="/DiversTable/add" className="button">Duik Toevoegen</Link>
         </div>
     ) 

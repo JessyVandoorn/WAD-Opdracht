@@ -69,7 +69,11 @@ module.exports = {
               }
               return Promise.reject("Already exists");
             });
-          }
+          },
+          deleteDive(_, args) {
+            const { _id } = args;
+            return Dive.findByIdAndRemove({ _id });
+          },
     },
     User: {
         dives: user => {

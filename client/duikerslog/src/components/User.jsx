@@ -18,7 +18,6 @@ class User extends Component {
     render() {
       return (
         <section className="user">
-          <h2>User</h2>
           <Query query={GET_CURRENT_USER}>
           {({loading, error, data, client})=> {
             if(loading) return null;

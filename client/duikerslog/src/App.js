@@ -22,6 +22,7 @@ class App extends Component {
       <main className="main">
         <h1><Link to="/">Duikerslog</Link></h1>
         <Navigation/>
+        <div>
         <Query query={GET_ALL_DIVES}>
           {
             ({loading, error, data:{allDives}}) => {
@@ -45,6 +46,7 @@ class App extends Component {
             }
       </Query>
       <User />
+      </div>
       </main>
     );
   }
