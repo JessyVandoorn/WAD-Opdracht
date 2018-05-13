@@ -5,12 +5,9 @@ import DELETE_DIVE from "../graphql/addDive";
 import GET_ALLDIVES from "../graphql/getAllDives";
 import { Mutation } from "react-apollo";
 
-const Duikerslog = ({dives}) => {
+import ProtectedComponent from "./ProtectedComponent";
 
-    // const handleDelete = e => {
-    //     console.log(e)
-    //     deleteDive({ variables: { id: dive._id } });
-    //   };
+const Duikerslog = ({dives}) => {
 
     return(
         <div className="tableButton">
@@ -56,6 +53,7 @@ const Duikerslog = ({dives}) => {
                                 <td className="td"> 
                                     <button onClick={e => {
                                         console.log("verwijderen")
+                                        console.log(dive._id)
                                         deleteDive({variables: {id: dive._id}})
                                     }}>Verwijderen</button>
                                 </td> 
@@ -67,7 +65,9 @@ const Duikerslog = ({dives}) => {
             )
     }
   </Mutation>
+  <ProtectedComponent protect={
                 <Link to="/DiversTable/add" className="button">Duik Toevoegen</Link>
+  } alternative={<p>Please sign in to create a new dive</p>}/>
         </div>
     ) 
 }

@@ -9,6 +9,7 @@ import DivePlacesDetail from './components/DivePlacesDetail';
 import AddDive from './components/AddDive';
 import NotFound from './components/NotFound';
 import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import {Query} from "react-apollo";
 import GET_ALL_DIVES from "./graphql/getAllDives";
@@ -20,7 +21,10 @@ class App extends Component {
     const {store} = this.props;
     return (
       <main className="main">
-        <h1><Link to="/">Duikerslog</Link></h1>
+        <div className="headerDiv">
+          <h1><Link to="/">Duikerslog</Link></h1>
+          <p><Link to="/User">Log in or sign in</Link></p>
+        </div>
         <Navigation/>
         <div>
         <Query query={GET_ALL_DIVES}>
@@ -31,9 +35,10 @@ class App extends Component {
               return(
           <Switch>
             <Route path='/' exact render={() => <OverviewDives dives={allDives} /> } /> 
+            <Route path='/User' exact render={() => <User /> } /> 
             <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
             <Route path='/Duikerslog'  render={() => <Duikerslog dives={allDives}/> } />
-            <Route path='/DiversTable/add' render={() => <AddDive />}/> 
+            <ProtectedRoute path='/DiversTable/add' render={() => <AddDive />}/> 
             <Route path='/DuikPlaatsen/:id' render={({ match }) => {
               const id = match.params.id;
               return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
@@ -45,7 +50,6 @@ class App extends Component {
               }
             }
       </Query>
-      <User />
       </div>
       </main>
     );

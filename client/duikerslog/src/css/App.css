@@ -118,3 +118,10 @@ a {
   display:flex;
   flex-direction: column;
 }
+
+.headerDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
