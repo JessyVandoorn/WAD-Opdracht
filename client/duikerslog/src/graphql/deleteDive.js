@@ -1,3 +1,5 @@
+import gql from "graphql-tag";
+
 export default gql `
     mutation deleteDive(
         $id: String!

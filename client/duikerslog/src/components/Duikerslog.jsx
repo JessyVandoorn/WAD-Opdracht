@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import DELETE_DIVE from "../graphql/addDive";
+import DELETE_DIVE from "../graphql/deleteDive";
 import GET_ALLDIVES from "../graphql/getAllDives";
 import { Mutation } from "react-apollo";
 
