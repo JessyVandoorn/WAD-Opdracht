@@ -36,6 +36,7 @@ class App extends Component {
       <main className="main">
         <div className="headerDiv">
           <h1><Link to="/">Duikerslog</Link></h1>
+          <p><Link to="/Account">Account</Link></p>
         </div>
         <Navigation/>
         <div>

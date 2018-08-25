@@ -29,8 +29,8 @@ const Login = ({store, history}) => {
 
   return (
     <section className='section-form'>
-      {/* <img className='form-img' width='394' height='417' alt='Schilderij met de toren van babel' src='./assets/svg/babel.svg'/>
-      {currentUser ? history.push(routes.ACCOUNT) : <div className='form-container-div'> */}
+      {/* <img className='form-img' width='394' height='417' alt='Schilderij met de toren van babel' src='./assets/svg/babel.svg'/> */}
+      {currentUser ? history.push('/Account') : <div className='form-container-div'> 
         <h2 className='subtitle-small'>Inloggen</h2>
         <form className='form-container' onSubmit={e => handleLogin(e)} ref={$form => handleValidation($form)}>
           <p className='error'></p>
@@ -52,7 +52,7 @@ const Login = ({store, history}) => {
           <h3>Nog geen account?</h3>
           <Link className='href' to='/Register'>Registreren</Link>
         </aside>
-      {/* </div> */}
+  </div> }
     </section>
   );
 };
