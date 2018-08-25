@@ -18,20 +18,9 @@ const schema = makeExecutableSchema({
 });
 
 app.use(cors());
-app.use(
-  "/graphql",
-  bodyParser.json(),
-  jwt({ secret: jwtsecret, credentialsRequired: false }),
-  graphqlExpress(req => ({
-    schema,
-    context: {
-      user: req.user ? User.findById(req.user.id) : Promise.resolve(null)
-    }
-  }))
-);
+app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 
 app.listen(PORT, () => {
   console.log(`Go to http://localhost:${PORT}/graphiql to run queries!`);
 });
-

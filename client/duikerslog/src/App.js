@@ -8,15 +8,30 @@ import OverviewDives from './components/OverviewDives';
 import DivePlacesDetail from './components/DivePlacesDetail';
 import AddDive from './components/AddDive';
 import NotFound from './components/NotFound';
+import Register from './components/Register.jsx';
+import Login from './components/Login.jsx';
+import Account from './components/Account.jsx';
 import { Route, Switch, Link, withRouter } from 'react-router-dom';
+
+import firebase from "firebase/app";
 
 import {Query} from "react-apollo";
 import GET_ALL_DIVES from "./graphql/getAllDives";
 
 class App extends Component {
 
+  componentDidMount() {
+    this.firebaseListener = firebase.auth().onAuthStateChanged(user => {
+      this.props.store.checkUser(user);
+    });
+  }
+
+  componentWillUnmount() {
+    this.firebaseListener = undefined;
+  }
+
   render() {
-    const {store} = this.props;
+    const {store, history} = this.props;
     return (
       <main className="main">
         <div className="headerDiv">
@@ -32,6 +47,9 @@ class App extends Component {
               return(
           <Switch>
             <Route path='/' exact render={() => <OverviewDives dives={allDives} /> } /> 
+            <Route path='/Login' render={() => <Login store={store} history={history}/>} />
+            <Route path='/Account' render={() => <Account store={store} history={history}/>} />
+            <Route path='/Register' render={() => <Register store={store} history={history}/>} />
             <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
             <Route path='/Duikerslog'  render={() => <Duikerslog dives={allDives}/> } />
             <Route path='/DiversTable/add' render={() => <AddDive />}/> 

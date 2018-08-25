@@ -8,22 +8,12 @@ module.exports = `
         buddy: String
         luchtStart: Int
         luchtEind: Int
-        user: User!
     }
 
     type Query {
         allDives: [Dive]
         dive(_id:String!):Dive
-        allUsers: [User]
     }
-
-    type User {
-        _id: String
-        name: String
-        email: String!
-        jwt: String
-        dives: [Dive]!
-  }
 
     type Mutation {
         addDive(
@@ -35,8 +25,6 @@ module.exports = `
             luchtStart: Int
             luchtEind: Int
         ):Dive
-        login(email: String!, password: String!):User
-        register(email: String!, password: String!,name: String!,):User
         deleteDive(
       _id: String!
     ): Dive
