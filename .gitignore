@@ -1,4 +1,5 @@
 .DS_Store
+.env
+process.env.FIREBASE_SERVICE_FILE
 node_modules/
 
-duikapp-firebase-adminsdk-cnx0p-f06652149d.json
