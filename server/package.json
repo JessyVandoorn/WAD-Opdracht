@@ -24,5 +24,14 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node server.js"
+  },
+  "now": {
+    "name": "serverduik",
+    "alias": "duikersapplication.now.sh",
+    "dotenv": ".env",
+    "env": {
+      "FIREBASE_CONFIG": "@duik_config",
+      "NODE_ENV": "production"
+    }
   }
 }
