@@ -1,82 +1,56 @@
-const {Dive} = require("./connectors");
+const {Dive, User} = require("./connectors");
+require("dotenv").config();
 const { GraphQLScalarType, GraphQLError } = require("graphql");
 const { Kind } = require("graphql/language");
-// const jwt = require("jsonwebtoken");
-// const { jwtsecret } = require("./config/");
+
+const getAuthenticatedUser = async context => {
+  const user = await context.user;
+  if (!user) {
+    return Promise.reject("UnauthorizedError");
+  }
+  return user;
+};
 
 const validateValue = value => {
-    if (isNaN(Date.parse(value)))
-      throw new GraphQLError(`Query error: not a valid date`, [value]);
-  };
-
-  // function getAuthenticatedUser(context) {
-  //   return context.user.then(user => {
-  //     if (!user) {
-  //       return Promise.reject("Unauthorized");
-  //     }
-  //     return user;
-  //   });
-  // }
+  if (isNaN(Date.parse(value)))
+    throw new GraphQLError(`Query error: not a valid date`, [value]);
+};
 
 module.exports = {
     Query: {
         allDives(){
             return Dive.find();
         },
+        allUsers() {
+          return User.find();
+        },
         dive(_, args){
             return Dive.findById(args._id);
+        },
+        user(_, args) {
+          return User.findOne({
+            authid: args.authid
+          });
         }
     },
     Mutation: {
         addDive(_, args) {
             return new Dive(args).save();
         },
-        // login(_, { email, password }, context) {
-        //     console.log("login");
-        //     return User.findOne({ email }).then(user => {
-        //       if (!user || !user.validPassword(password)) {
-        //         return Promise.reject("Invalid username/password");
-        //       } else {
-        //         console.log("login ok");
-        //         const token = jwt.sign(
-        //           {
-        //             id: user._id,
-        //             name: user.name
-        //           },
-        //           jwtsecret
-        //         );
-        //         user.jwt = token;
-        //         context.user = Promise.resolve(user);
-        //         return user;
-        //       }
-        //     });
-        //   },
-        //   register(_, { email, password, name }, context) {
-        //     console.log("register", email, password, name);
-        //     return User.findOne({ email }).then(user => {
-        //       if (!user) {
-        //         return User.create({ email, password, name })
-        //           .then(user => {
-        //             context.user = Promise.resolve(user);
-        //             return user;
-        //           })
-        //           .catch(err => {
-        //             return Promise.reject("Registration errors" + err.message);
-        //           });
-        //       }
-        //       return Promise.reject("Already exists");
-        //     });
-        //   },
+        
           deleteDive(_, args) {
             const { _id } = args;
             return Dive.findByIdAndRemove({ _id });
           },
+          register: (_, args) => {
+            return User.create(args);
+          },
     },
-    // User: {
-    //     dives: user => {
-    //       return Dive.find({ user: user._id });
-    //     }
-    //   },
+    User: {
+        dives: user => {
+          return Dive.find({ user: user._id });
+        }
+      },
       Date: new GraphQLScalarType({
         name: "Date",
         description: "Date type",

@@ -1,4 +1,7 @@
 module.exports = `
+
+    scalar Date
+
     type Dive {
         _id: String
         datum: String
@@ -8,11 +11,22 @@ module.exports = `
         buddy: String
         luchtStart: Int
         luchtEind: Int
+        user: User
     }
+
+    type User {
+    _id: String
+    name: String
+    email: String!
+    authid: String
+    dives: [Dive]
+  }
 
     type Query {
         allDives: [Dive]
+        allUsers: [User]
         dive(_id:String!):Dive
+        user(authid:String!): User
     }
 
     type Mutation {
@@ -28,6 +42,11 @@ module.exports = `
         deleteDive(
       _id: String!
     ): Dive
+    register(
+      email:String!, 
+      authid: String!,
+      name:String!,
+    ):User
+    login(email:String!, password:String! ):User
     }
-    scalar Date
 `

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OverviewDives = ({ dives }) => {
+    console.log(dives);
     return (
         <div className="divesOverview">
             {

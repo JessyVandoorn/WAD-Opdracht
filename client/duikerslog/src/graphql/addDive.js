@@ -13,6 +13,9 @@ export default gql `
             buddy
             luchtStart
             luchtEind
+            user{
+                name
+            }
         }
     }
 `;

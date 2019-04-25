@@ -8,10 +8,15 @@ import OverviewDives from './components/OverviewDives';
 import DivePlacesDetail from './components/DivePlacesDetail';
 import AddDive from './components/AddDive';
 import NotFound from './components/NotFound';
-import Register from './components/Register.jsx';
-import Login from './components/Login.jsx';
+import Register from "./components/auth/Register";
+import Gate from "./components/auth/Gate";
+import LoadingScreen from "./components/LoadingScreen";
+import Login from "./components/auth/Login";
 import Account from './components/Account.jsx';
-import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import Reset from "./components/auth/Reset";
+
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Route, Link, Switch, withRouter } from 'react-router-dom';
 
 import firebase from "firebase/app";
 
@@ -20,9 +25,33 @@ import GET_ALL_DIVES from "./graphql/getAllDives";
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      authenticated: false,
+      currentUser: null,
+      loading: true
+    };
+    this.props = props;
+  }
+
+
   componentDidMount() {
     this.firebaseListener = firebase.auth().onAuthStateChanged(user => {
-      this.props.store.checkUser(user);
+      console.log(user);
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false,
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false,
+        });
+      }
     });
   }
 
@@ -31,7 +60,20 @@ class App extends Component {
   }
 
   render() {
+    let authId = "0";
+    if (this.state.currentUser) {
+      authId = this.state.currentUser.uid;
+    }
+
+    const { loading, authenticated} = this.state;
     const {store, history} = this.props;
+
+    console.log(this.state.currentUser);
+
+    if(loading) { // if your component doesn't have to wait for an async action, remove this block 
+    return <LoadingScreen/>; // render null when app is not ready
+  }
+
     return (
       <main className="main">
         <div className="headerDiv">
@@ -59,7 +101,52 @@ class App extends Component {
               return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
             }} /> 
             <Route path='/DiveMaterial' exact render={() => <DiveMaterial/> } />
-            <Route component={NotFound}/> 
+            <ProtectedRoute
+                        path="/Account"
+                        component={Account}
+                        authenticated={authenticated}
+                        userId={authId}
+                        projects={allDives}
+                        events={store.evenementen}
+                      />
+                                  <Route path='/Account/:id' render={({ match }) => {
+                        const id = match.params.id;
+                        return history.location.key !== undefined ? <Account key={id} id={id} projects={allDives} events={store.evenementen}/>: <NotFound/>
+                      }} />
+             <Route
+                        path="/Register"
+                        render={({ history }) => (
+                          <Gate
+                            body={<Register history={history} />}
+                            footer={
+                              <Link to="/Login" className="signup-link"></Link>
+                            }
+                          />
+                        )}
+                      /> 
+                      <Route
+                        path="/login"
+                        render={({ history }) => (
+                        <Gate
+                          body={<Login history={history} />}
+                          footer={
+                            <Link to="/Register" className="signup-link"></Link>
+                          }
+                        />
+                        )}
+                      />
+                      <Route
+	                      path="/Reset"
+	                      render={({ history }) => (
+	                      <Gate
+	                        body={<Reset history={history} />}
+	                        footer={
+	                          <Link to="/Reset" className="signup-link"></Link>
+	                        }
+	                      />
+	                      )}
+	                    />
+            {/* <Route component={NotFound}/>  */}
           </Switch>
               )
               }

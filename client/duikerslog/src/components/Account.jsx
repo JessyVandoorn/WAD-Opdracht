@@ -14,6 +14,7 @@ const Account = ({store, history}) => {
     <Query query={GET_ALL_DIVES}>
           {
             ({loading, error, data:{allDives}}) => {
+              console.log('ingelogd');
               if(loading) return <p>Loading ...</p>;
               if(error) return <p>error: {error.message}</p>
               return(
