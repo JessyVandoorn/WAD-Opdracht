@@ -17,6 +17,8 @@ const Login = ({store, history}) => {
       history: history,
       form: e.target
     });
+
+    console.log(currentUser);
   };
 
   const handleValidation = $form => {

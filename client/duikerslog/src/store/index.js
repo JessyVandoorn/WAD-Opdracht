@@ -75,7 +75,7 @@ class Store {
           : history.push('/Account'));
 
     get url(){
-        return '/data/divePlaces.json';
+        return '/data/evenementen.json';
     }
 
     fetchFromApi(){
