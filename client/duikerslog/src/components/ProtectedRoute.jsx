@@ -15,7 +15,7 @@ const ProtectedRoute = ({ component: Component, authenticated, userId, projects,
           {...rest}
           render={props => {
             return authenticated ? (
-              <Component currentUser={user} projects={projects} events={events} isChecked={isChecked} {...props} />
+              <Component currentUser={userId} projects={projects} events={events} isChecked={isChecked} {...props} />
             ) : (
                 <Redirect
                   to={{

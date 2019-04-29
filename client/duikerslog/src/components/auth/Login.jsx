@@ -31,6 +31,8 @@ class Login extends Component {
           this.setState({ feedback: error.message });
         });
       if (user) {
+        console.log(user);
+        console.log(this.props.history);
         this.props.history.push("/Account");
       }
     } catch (error) {

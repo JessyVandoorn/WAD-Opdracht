@@ -30,7 +30,8 @@ class App extends Component {
     this.state = {
       authenticated: false,
       currentUser: null,
-      loading: true
+      loading: true,
+      duiken: []
     };
     this.props = props;
   }
@@ -38,7 +39,6 @@ class App extends Component {
 
   componentDidMount() {
     this.firebaseListener = firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
       if (user) {
         this.setState({
           authenticated: true,
@@ -62,13 +62,14 @@ class App extends Component {
   render() {
     let authId = "0";
     if (this.state.currentUser) {
+      console.log(this.state.currentUser);
       authId = this.state.currentUser.uid;
+      console.log(authId);
     }
 
-    const { loading, authenticated} = this.state;
+    console.log(authId);
+    const { loading, authenticated, duiken} = this.state;
     const {store, history} = this.props;
-
-    console.log(this.state.currentUser);
 
     if(loading) { // if your component doesn't have to wait for an async action, remove this block 
     return <LoadingScreen/>; // render null when app is not ready
@@ -85,16 +86,14 @@ class App extends Component {
         <Query query={GET_ALL_DIVES}>
           {
             ({loading, error, data:{allDives}}) => {
+              console.log(allDives);
               if(loading) return <p>Loading ...</p>;
               if(error) return <p>error: {error.message}</p>
               return(
           <Switch>
             <Route path='/' exact render={() => <OverviewDives dives={allDives} /> } /> 
-            <Route path='/Login' render={() => <Login store={store} history={history}/>} />
-            <Route path='/Account' render={() => <Account store={store} history={history}/>} />
-            <Route path='/Register' render={() => <Register store={store} history={history}/>} />
             <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
-            <Route path='/Duikerslog'  render={() => <Duikerslog dives={allDives}/> } />
+            <Route path='/Duikerslog'  render={() => <Duikerslog  duiken={duiken} dives={allDives} history={history}/> } />
             <Route path='/DiversTable/add' render={() => <AddDive />}/> 
             <Route path='/DuikPlaatsen/:id' render={({ match }) => {
               const id = match.params.id;
@@ -109,10 +108,6 @@ class App extends Component {
                         projects={allDives}
                         events={store.evenementen}
                       />
-                                  <Route path='/Account/:id' render={({ match }) => {
-                        const id = match.params.id;
-                        return history.location.key !== undefined ? <Account key={id} id={id} projects={allDives} events={store.evenementen}/>: <NotFound/>
-                      }} />
              <Route
                         path="/Register"
                         render={({ history }) => (

@@ -5,32 +5,42 @@ import OverviewDives from './OverviewDives.jsx';
 import PropTypes from 'prop-types';
 
 import {Query} from "react-apollo";
-import GET_ALL_DIVES from "../graphql/getAllDives";
+import GET_CURRENT_USER from "../graphql/getCurrentUser";
 
-const Account = ({store, history}) => {
-  const {currentUser} = store;
+import firebase from "firebase/app";
+import "firebase/auth";
 
-    return(
-    <Query query={GET_ALL_DIVES}>
+
+
+const Account = ({store, history, currentUser, dives}) => {
+  console.log(currentUser);
+  const handleSignOut = async () => {
+    await firebase.auth().signOut();
+    history.push("/Login");
+  };
+
+return(
+  <Query query={GET_CURRENT_USER}  variables={{ authid: currentUser }}>
           {
-            ({loading, error, data:{allDives}}) => {
-              console.log('ingelogd');
+            ({loading, error, data:{user}}) => {
               if(loading) return <p>Loading ...</p>;
               if(error) return <p>error: {error.message}</p>
-              return(
-                <div className='account-box'>
-      {currentUser ? <OverviewDives store={store} history={history} dives={allDives}/> : history.push('/Login')}
-      <button className='btn btn-form uitlog-btn' onClick={() => store.logout(history)}>Uitloggen</button>
+
+    return(
+      <div className='account-box'>
+      <p>{user.name}</p>
+      {currentUser !== null ? " " : history.push('/Login')}
+      {currentUser !== null ? <button className="uitlog-button" onClick={() => handleSignOut()}>Uitloggen</button> : ""}
       </div>
-    )
-}
-}
-</Query>
     );
+              }
+            }
+      </Query>
+)
+
 };
 
 Account.propTypes = {
-  store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 

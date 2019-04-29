@@ -99,10 +99,6 @@ class Register extends Component {
                 <p className="form-error"></p>
               </div>
 
-              
-
-                  
-
               <div className="button-next button-next--primary" >
                 <input type="submit" value="Registreren" /> <i className="arrow right"></i>
               </div>

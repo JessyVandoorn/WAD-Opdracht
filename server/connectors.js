@@ -21,8 +21,9 @@ const Diveschema = mongoose.Schema({
 });
 
 const UserSchema = mongoose.Schema({
-    name: String,
-    email: {type: String, required:true, index:{unique: true}}
+  name: String,
+  email: String,
+  authid: String
 });
 
 const Dive = mongoose.model("dive", Diveschema);
