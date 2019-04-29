@@ -17,6 +17,7 @@ class AddDive extends Component {
    eind = null;
 
    redirect = () => {
+     console.log(this.props);
     this.props.history.push(`/Duikerslog`);
   }
 
@@ -33,6 +34,7 @@ class AddDive extends Component {
             query: GET_ALLDIVES,
             data
           });
+          console.log(data.allDives);
         }}
       >
       {(addDive) => (

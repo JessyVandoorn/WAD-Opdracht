@@ -90,7 +90,7 @@ class Duikerslog extends Component {
           )
           }
         </Mutation>
-        <Link to="/Diverstable/add" className="button">Duik Toevoegen</Link>
+        <Link to="/Duikerslog/add" className="button">Duik Toevoegen</Link>
       </div>
     )
   }

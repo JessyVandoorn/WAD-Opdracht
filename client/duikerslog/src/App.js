@@ -86,15 +86,15 @@ class App extends Component {
         <Query query={GET_ALL_DIVES}>
           {
             ({loading, error, data:{allDives}}) => {
-              console.log(allDives);
+              console.log('3',allDives);
               if(loading) return <p>Loading ...</p>;
               if(error) return <p>error: {error.message}</p>
               return(
           <Switch>
             <Route path='/' exact render={() => <OverviewDives dives={allDives} /> } /> 
             <Route path='/DuikPlaatsen' exact  render={() => <DuikPlaatsen store={store}/> } />
-            <Route path='/Duikerslog'  render={() => <Duikerslog  duiken={duiken} dives={allDives} history={history}/> } />
-            <Route path='/DiversTable/add' render={() => <AddDive />}/> 
+            <Route path='/Duikerslog' exact  render={() => <Duikerslog  dives={allDives} history={history}/> } />
+            <Route path="/Duikerslog/add" component={AddDive}/> 
             <Route path='/DuikPlaatsen/:id' render={({ match }) => {
               const id = match.params.id;
               return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
