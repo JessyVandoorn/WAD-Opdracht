@@ -30,7 +30,7 @@
     "alias": "duikersapplication.now.sh",
     "dotenv": ".env",
     "env": {
-      "FIREBASE_CONFIG": "@duik_config",
+      "FIREBASE_CONFIG": "@google-private-key",
       "NODE_ENV": "production"
     }
   }
