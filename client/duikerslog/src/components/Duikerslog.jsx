@@ -33,7 +33,6 @@ class Duikerslog extends Component {
 
   render = () => {
     const { duiken } = this.state;
-    const { dives } = this.props;
     return (
       <div className="tableButton">
         <Mutation
@@ -90,7 +89,7 @@ class Duikerslog extends Component {
           )
           }
         </Mutation>
-        <Link to="/Duikerslog/add" className="button">Duik Toevoegen</Link>
+        <Link to="/Dive/add" className="button">Duik Toevoegen</Link>
       </div>
     )
   }

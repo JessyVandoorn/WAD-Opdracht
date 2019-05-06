@@ -1,7 +1,5 @@
 import React from 'react';
 import {observer} from "mobx-react";
-import OverviewDives from './OverviewDives.jsx';
-// import * as routes from '../lib/routes.js';
 import PropTypes from 'prop-types';
 
 import {Query} from "react-apollo";

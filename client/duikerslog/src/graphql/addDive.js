@@ -15,6 +15,7 @@ export default gql `
             luchtEind
             user{
                 name
+                authid
             }
         }
     }
