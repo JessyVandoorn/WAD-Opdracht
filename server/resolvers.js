@@ -18,8 +18,9 @@ const validateValue = value => {
 
 module.exports = {
     Query: {
-        allDives(){
-            return Dive.find();
+        allDives(_, args){
+          console.log(args.user);
+            return Dive.find(args);
         },
         allUsers() {
           return User.find();
@@ -37,6 +38,7 @@ module.exports = {
         addDive(_, args, context) {
           return getAuthenticatedUser(context).then(user => {
             args.user = user.id;
+            console.log(args);
             return new Dive(args).save();
           });
         },
@@ -56,7 +58,7 @@ module.exports = {
     },
     User: {
         dives: user => {
-          return Dive.find({ user: user._id });
+          return Dive.find({ user: user.dive  });
         }
       },
       Date: new GraphQLScalarType({

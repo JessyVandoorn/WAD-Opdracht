@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export default gql `
-    query getAllDives {
-        allDives{
+    query getAllDives($user: String!) {
+        allDives (user: $user){
             _id
             datum
             locatie
@@ -11,6 +11,9 @@ export default gql `
             buddy
             luchtStart
             luchtEind
+            user {
+                name
+            }
         }
     }
 `;

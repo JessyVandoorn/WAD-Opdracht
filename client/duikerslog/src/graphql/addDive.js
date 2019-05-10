@@ -13,9 +13,8 @@ export default gql `
             buddy
             luchtStart
             luchtEind
-            user{
+            user {
                 name
-                authid
             }
         }
     }
