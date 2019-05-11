@@ -34,11 +34,8 @@ module.exports = {
         }
     },
     Mutation: {
-        addDive(_, args, context) {
-          return getAuthenticatedUser(context).then(user => {
-            args.user = user.id;
+        addDive(_, args) {
             return new Dive(args).save();
-          });
         },
         
           deleteDive(_, args) {
@@ -48,11 +45,6 @@ module.exports = {
           register: (_, args) => {
             return User.create(args);
           },
-    },
-    Dive: {
-      user: dive => {
-        return User.findById(dive.user);
-      }
     },
     User: {
         dives: user => {

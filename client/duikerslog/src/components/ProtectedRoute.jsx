@@ -5,7 +5,7 @@ import { Route, Redirect } from "react-router-dom";
 import { Query } from "react-apollo";
 import USER from "../graphql/user";
 
-const ProtectedRoute = ({ component: Component, authenticated, userId, dives, store, events, isChecked, ...rest }) => (
+const ProtectedRoute = ({ component: Component, authenticated, userId, projects, events, isChecked, ...rest }) => (
   <Query query={USER} variables={{ authid: userId }}>
     {({ loading, error, data: { user } }) => {
       if (loading) return <p>loading...</p>;
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ component: Component, authenticated, userId, dives, st
           {...rest}
           render={props => {
             return authenticated ? (
-              <Component currentUser={userId} dives={dives} store={store} events={events} isChecked={isChecked} {...props} />
+              <Component currentUser={userId} projects={projects} events={events} isChecked={isChecked} {...props} />
             ) : (
                 <Redirect
                   to={{

@@ -69,7 +69,7 @@ class App extends Component {
     }
 
     console.log(authId);
-    const { loading, authenticated} = this.state;
+    const { loading, authenticated, duiken} = this.state;
     const {store, history} = this.props;
 
     if(loading) { // if your component doesn't have to wait for an async action, remove this block 
@@ -78,7 +78,37 @@ class App extends Component {
 
     return (
       <main className="main">
-      {authId === "0" ? <div className="headerDiv"> 
+          <div className="headerDiv">
+        <h1><Link to="/">Duikerslog</Link></h1>
+        <p><Link to="/Account">{authenticated? this.state.currentUser.email:"Account"}</Link></p>
+      </div>
+      <Navigation/>
+      <div>
+      <Query query={GET_ALL_DIVES} >
+      {
+        ({loading, error, data:{allDives}}) => {
+          if(loading) return <p>Loading ...</p>;
+          console.log(allDives);
+          if(error) return <p>error: {error.message}</p>
+          return(
+      <Switch>
+        <ProtectedRoute path='/' userId={authId} exact component={OverviewDives} authenticated={authenticated} dives={allDives} /> 
+        <ProtectedRoute path='/DuikPlaatsen' component={DuikPlaatsen} exact authenticated={authenticated} userId={authId}  store={store}  />
+        <ProtectedRoute path='/Duikerslog' exact component={Duikerslog} authenticated={authenticated} userId={authId}  dives={allDives} history={history} />
+        <ProtectedRoute path="/Dive/add" component={AddDive} authenticated={authenticated} userId={authId} projects={allDives} events={store.evenementen} /> 
+        <Route path='/DuikPlaatsen/:id' render={({ match }) => {
+          const id = match.params.id;
+          return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
+        }} /> 
+        <ProtectedRoute path='/DiveMaterial' exact component={DiveMaterial} authenticated={authenticated} userId={authId} />
+        <ProtectedRoute
+                    path="/Account"
+                    component={Account}
+                    authenticated={authenticated}
+                    userId={authId}
+                    projects={allDives}
+                    events={store.evenementen}
+                  />
          <Route
                         path="/Register"
                         render={({ history }) => (
@@ -112,39 +142,6 @@ class App extends Component {
 	                      />
 	                      )}
 	                    />
-        </div> : 
-        <div>  
-          <div className="headerDiv">
-        <h1><Link to="/">Duikerslog</Link></h1>
-        <p><Link to="/Account">{authenticated? this.state.currentUser.email:"Account"}</Link></p>
-      </div>
-      <Navigation/>
-      <div>
-      <Query query={GET_ALL_DIVES} >
-      {
-        ({loading, error, data:{allDives}}) => {
-          if(loading) return <p>Loading ...</p>;
-          console.log(allDives);
-          if(error) return <p>error: {error.message}</p>
-          return(
-      <Switch>
-        <ProtectedRoute path='/' userId={authId} exact component={OverviewDives} authenticated={authenticated} dives={allDives} /> 
-        <ProtectedRoute path='/DuikPlaatsen' component={DuikPlaatsen} exact authenticated={authenticated} userId={authId}  store={store}  />
-        <ProtectedRoute path='/Duikerslog' exact component={Duikerslog} authenticated={authenticated} userId={authId}  dives={allDives} history={history} />
-        <ProtectedRoute path="/Dive/add" component={AddDive} authenticated={authenticated} userId={authId} projects={allDives} events={store.evenementen} /> 
-        <Route path='/DuikPlaatsen/:id' render={({ match }) => {
-          const id = match.params.id;
-          return store.places[id]?<DivePlacesDetail key={id} id={id} store={store.places[id]} />:<NotFound />
-        }} /> 
-        <ProtectedRoute path='/DiveMaterial' exact component={DiveMaterial} authenticated={authenticated} userId={authId} />
-        <ProtectedRoute
-                    path="/Account"
-                    component={Account}
-                    authenticated={authenticated}
-                    userId={authId}
-                    projects={allDives}
-                    events={store.evenementen}
-                  />
         {/* <Route component={NotFound}/>  */}
       </Switch>
           )
@@ -152,10 +149,8 @@ class App extends Component {
         }
   </Query>
     
-    </div></div>
-       }
        
-        
+        </div>
       </main>
     );
   }
