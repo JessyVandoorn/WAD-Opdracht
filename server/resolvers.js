@@ -19,7 +19,6 @@ const validateValue = value => {
 module.exports = {
     Query: {
         allDives(_, args){
-          console.log(args.user);
             return Dive.find(args);
         },
         allUsers() {
@@ -38,7 +37,6 @@ module.exports = {
         addDive(_, args, context) {
           return getAuthenticatedUser(context).then(user => {
             args.user = user.id;
-            console.log(args);
             return new Dive(args).save();
           });
         },

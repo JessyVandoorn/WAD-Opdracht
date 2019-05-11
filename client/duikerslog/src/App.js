@@ -120,15 +120,7 @@ class App extends Component {
       </div>
       <Navigation/>
       <div>
-        <Query query={GET_CURRENT_USER} variables={{ authid: authId }}>
-        {
-            ({loading, error, data:{user}}) => {
-              
-              if(loading) return <p>Loading ...</p>;
-              if(error) return <p>error: {error.message}</p>
-              console.log(user._id);
-    return(
-      <Query query={GET_ALL_DIVES} variables={{ user: user._id }}>
+      <Query query={GET_ALL_DIVES} >
       {
         ({loading, error, data:{allDives}}) => {
           if(loading) return <p>Loading ...</p>;
@@ -159,10 +151,6 @@ class App extends Component {
           }
         }
   </Query>
-    );
-              }
-            }
-        </Query>
     
     </div></div>
        }

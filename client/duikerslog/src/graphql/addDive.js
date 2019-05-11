@@ -13,7 +13,8 @@ export default gql `
             buddy
             luchtStart
             luchtEind
-            user {
+            user{
+                _id
                 name
             }
         }

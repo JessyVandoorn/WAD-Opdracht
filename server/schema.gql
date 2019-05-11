@@ -1,7 +1,5 @@
 module.exports = `
 
-directive @user on FIELD_DEFINITION
-
     scalar Date
 
     type Dive {
@@ -13,7 +11,7 @@ directive @user on FIELD_DEFINITION
         buddy: String
         luchtStart: Int
         luchtEind: Int
-        user: User @user
+        user: User 
     }
 
     type User {
