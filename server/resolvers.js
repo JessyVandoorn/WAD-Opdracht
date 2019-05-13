@@ -18,8 +18,8 @@ const validateValue = value => {
 
 module.exports = {
     Query: {
-        allDives(_, args){
-            return Dive.find(args);
+        allDives(){
+            return Dive.find();
         },
         allUsers() {
           return User.find();
@@ -34,8 +34,11 @@ module.exports = {
         }
     },
     Mutation: {
-        addDive(_, args) {
+        addDive(_, args, context) {
+          return getAuthenticatedUser(context).then(user => {
+            args.user = user.id;
             return new Dive(args).save();
+          });
         },
         
           deleteDive(_, args) {
@@ -46,9 +49,14 @@ module.exports = {
             return User.create(args);
           },
     },
+    Dive: {
+      user: dive => {
+        return User.findById(dive.user);
+      }
+    },
     User: {
         dives: user => {
-          return Dive.find({ user: user.dive  });
+          return Dive.find({ user: user._id });
         }
       },
       Date: new GraphQLScalarType({

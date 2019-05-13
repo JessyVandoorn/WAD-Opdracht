@@ -14,8 +14,8 @@ export default gql `
             luchtStart
             luchtEind
             user{
-                _id
                 name
+                authid
             }
         }
     }

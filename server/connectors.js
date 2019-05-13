@@ -18,6 +18,7 @@ const Diveschema = mongoose.Schema({
     buddy: String,
     luchtStart: Number,
     luchtEind: Number,
+    user: String,
 });
 
 const UserSchema = mongoose.Schema({

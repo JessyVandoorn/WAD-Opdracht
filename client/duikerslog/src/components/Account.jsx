@@ -1,6 +1,5 @@
 import React from 'react';
 import {observer} from "mobx-react";
-import OverviewDives from './OverviewDives.jsx';
 // import * as routes from '../lib/routes.js';
 import PropTypes from 'prop-types';
 
@@ -25,6 +24,7 @@ return(
             ({loading, error, data:{user}}) => {
               if(loading) return <p>Loading ...</p>;
               if(error) return <p>error: {error.message}</p>
+              console.log(user);
 
     return(
       <div className='account-box'>

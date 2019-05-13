@@ -1,7 +1,4 @@
 import {decorate, observable} from 'mobx';
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/database";
 
 class Store {
 

@@ -26,18 +26,15 @@ class AddDive extends Component {
       <Mutation
         mutation={ADD_DIVE}
         update={(cache, {data: {addDive}}) => {
-          if(cache.data.data.allDives){
-            const data = cache.readQuery({
-              query: GET_ALLDIVES
-            });
-            data.allDives.push(addDive);
-            cache.writeQuery({
-              query: GET_ALLDIVES,
-              data
-            });
-            console.log(data.allDives);
-          }
-         
+          const data = cache.readQuery({
+            query: GET_ALLDIVES
+          });
+          data.allDives.push(addDive);
+          cache.writeQuery({
+            query: GET_ALLDIVES,
+            data
+          });
+          console.log(data.allDives);
         }}
       >
       {(addDive) => (
@@ -93,4 +90,3 @@ AddDive.propTypes =  {
 }
 
 export default withRouter(AddDive);
-

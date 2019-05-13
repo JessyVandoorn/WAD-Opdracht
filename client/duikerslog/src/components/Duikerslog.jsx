@@ -33,7 +33,6 @@ class Duikerslog extends Component {
 
   render = () => {
     const { duiken } = this.state;
-    const { dives } = this.props;
     return (
       <div className="tableButton">
         <Mutation
