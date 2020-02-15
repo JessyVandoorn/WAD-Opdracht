@@ -34,5 +34,8 @@
       "FIREBASE_CONFIG": "@google-private-key",
       "NODE_ENV": "production"
     }
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.8.0"
   }
 }
